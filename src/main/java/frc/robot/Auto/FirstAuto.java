@@ -1,5 +1,8 @@
 package frc.robot.Auto;
 
-public class FirstAuto {
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+
+public class FirstAuto extends CommandBase {
     
 }

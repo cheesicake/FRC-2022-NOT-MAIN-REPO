@@ -2,7 +2,13 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Auto.FirstAuto;
+import frc.robot.Auto.SecondAuto;
+import frc.robot.Auto.ThirdAuto;
+import frc.robot.Auto.ZeroAuto;
 import frc.robot.commands.Drive;
 import frc.robot.constants.JoystickConstants;
 import frc.robot.subsystems.Drivetrain;
@@ -27,9 +33,20 @@ public class RobotContainer {
   private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
   
 
+  //Auto
+  private final ZeroAuto zeroAuto = new ZeroAuto();
+  private final FirstAuto firstAuto = new FirstAuto();
+  private final SecondAuto secondAuto = new SecondAuto();
+  private final ThirdAuto thirdAuto = new ThirdAuto();
+
+  private final SendableChooser<Command> sendableChooser = new SendableChooser<>();
+
+  
+
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    configureAutos();
   }
 
   private void configureButtonBindings() {
@@ -37,9 +54,17 @@ public class RobotContainer {
     exampleButton.whenHeld(exampleCommand); //Example Code 
   }
 
+  private void configureAutos() {
+    //TODO: Rename Autos on Dashboard
 
-  public void getAutonomousCommand() { //Temporarily replaced Command with Void to be able to build
+    sendableChooser.setDefaultOption("No Auto", zeroAuto);
+    sendableChooser.addOption("First Auto", firstAuto);
+    sendableChooser.addOption("Second Auto", secondAuto);
+    sendableChooser.addOption("Third Auto", thirdAuto);
+  }
 
-    return;
+  public Command getAutonomousCommand() { 
+
+    return sendableChooser.getSelected();
   }
 }

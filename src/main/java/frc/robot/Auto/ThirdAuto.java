@@ -1,5 +1,7 @@
 package frc.robot.Auto;
 
-public class ThirdAuto {
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+public class ThirdAuto extends CommandBase{
     
 }
