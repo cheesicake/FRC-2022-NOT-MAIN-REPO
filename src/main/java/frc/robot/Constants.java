@@ -13,8 +13,8 @@ public class Constants {
         public final static int leftFrontTalon = 3;
         public final static int leftRearTalon = 4;
 
-        public final static int intakeSpark1 = 5;
-        public final static int intakeSpark2 = 6;
+        public final static int armSpark = 5;
+        public final static int intakeSpark = 6;
         public final static int feederSpark1 = 7;
         public final static int feederSpark2 = 8;
         public final static int feederSpark3 = 9;
@@ -48,6 +48,14 @@ public class Constants {
         public final double metersPerRev = Units.metersToInches(3) * 2 * Math.PI;
 
         public final double trackWidth = 0.5; // TODO: Need To Determine In Meters
+
+    }
+    public class IntakeAndArmConstants {
+        public final static double intakeSpeed = 0.3;
+        public final static double backwardsIntakeSpeed = -0.3;
+        
+        public final static double raiseArmSpeed = 0.1;
+        public final static double lowerArmSpeed = -0.1;
 
     }
 
