@@ -51,7 +51,11 @@ public class Constants {
         public final double trackWidth = 0.5; //TODO: Need To Determine
 
     }
-
+    
+    public class ClimberConstants {
+        public final static double raiseClimberSpeed = 0.1;
+        public final static double lowerClimberSpeed = -0.1;
+    }
 
      
 }
