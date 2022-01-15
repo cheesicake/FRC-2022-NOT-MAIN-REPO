@@ -8,23 +8,25 @@ import frc.robot.Constants;
 
 import com.revrobotics.CANSparkMax;
 
-public class Intake extends SubsystemBase {
+public class Intake extends SubsystemBase implements SingleMotorSubsystem {
     private CANSparkMax intakeSpark;
 
     public Intake() {
         intakeSpark = new CANSparkMax(Constants.CanIds.intakeSpark, MotorType.kBrushless);
     }
 
-    public void runIntake() {
-        intakeSpark.set(Constants.IntakeAndArmConstants.intakeSpeed);
+    public void set(boolean dir) {
+        if (dir) {
+            intakeSpark.set(Constants.IntakeAndArmConstants.intakeSpeed);
+        } else {
+            intakeSpark.set(-Constants.IntakeAndArmConstants.intakeSpeed);
+        }
     }
-    public void runIntakeBackwards() {
-        intakeSpark.set(Constants.IntakeAndArmConstants.backwardsIntakeSpeed);
+    public void stop() {
+        intakeSpark.set(0.0);
     }
 
-    public CANSparkMax getIntakeSpark() {
-        return intakeSpark;
+    public CANSparkMax getMotor() { // why
+        return this.intakeSpark;
     }
-
-
 }

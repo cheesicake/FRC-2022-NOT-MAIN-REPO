@@ -1,7 +1,5 @@
 package frc.robot;
 
-
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -10,21 +8,21 @@ import frc.robot.Auto.FirstAuto;
 import frc.robot.Auto.SecondAuto;
 import frc.robot.Auto.ThirdAuto;
 import frc.robot.Auto.ZeroAuto;
-import frc.robot.Constants.JoystickConstants;
+import frc.robot.Constants.*;
 import frc.robot.commands.Drive;
 import frc.robot.commands.LowerArm;
 import frc.robot.commands.RaiseArm;
+import frc.robot.commands.RunFeeder;
 import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunIntakeBackwards;
-import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.*;
 
 public class RobotContainer {
 
   //Subsystems
   private Drivetrain drivetrain = new Drivetrain();
   private Intake intake = new Intake();
+  private final Feeder feeder = new Feeder();
   private Arm arm = new Arm();
 
   //Joysticks
@@ -40,7 +38,7 @@ public class RobotContainer {
   private final JoystickButton runIntakeBackwardsButton = new JoystickButton(secondaryJoystick,Constants.JoystickConstants.SecondaryJoystick.runIntakeBackwards);
   private final JoystickButton raiseArmButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseArm);
   private final JoystickButton lowerArmButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerArm);
-
+  private final JoystickButton runFeederButton= new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runFeeder);
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
@@ -49,6 +47,7 @@ public class RobotContainer {
   private final RaiseArm raiseArm = new RaiseArm(arm);
   private final RunIntake runIntake = new RunIntake(intake);
   private final RunIntakeBackwards runIntakeBackwards = new RunIntakeBackwards(intake);
+  private final RunFeeder runFeeder = new RunFeeder(feeder);
 
   // Auto
   private final ZeroAuto zeroAuto = new ZeroAuto();
@@ -66,12 +65,14 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     drivetrain.setDefaultCommand(drive);
+    feeder.setDefaultCommand(runFeeder);
+
     exampleButton.whenHeld(exampleCommand); // Example Code
     runIntakeButton.whenHeld(runIntake);
     runIntakeBackwardsButton.whenHeld(runIntakeBackwards);
     raiseArmButton.whenHeld(raiseArm);
     lowerArmButton.whenHeld(lowerArm);
-
+    runFeederButton.whenHeld(runFeeder);
   }
 
   private void configureAutos() {
@@ -84,8 +85,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-
     return sendableChooser.getSelected();
   }
-  
 }
