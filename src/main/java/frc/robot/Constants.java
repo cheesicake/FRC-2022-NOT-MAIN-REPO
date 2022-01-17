@@ -40,14 +40,14 @@ public class Constants {
 
     }
 
-    public class DriveTrainConstants {
+    public static class DriveTrainConstants {
         public final static double kP = 0.5;
         public final static double kI = 0;
         public final static double kD = 0;
 
-        public final double metersPerRev = Units.metersToInches(3) * 2 * Math.PI;
+        public final static double metersPerRev = Units.metersToInches(3) * 2 * Math.PI;
 
-        public final double trackWidth = 0.5; // TODO: Need To Determine In Meters
+        public final double trackWidth = Units.inchesToMeters(25); // TODO: Need To Determine In Meters
 
     }
 
