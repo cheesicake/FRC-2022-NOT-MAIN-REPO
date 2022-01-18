@@ -1,24 +1,12 @@
 package frc.robot;
 
-
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Auto.FirstAuto;
-import frc.robot.Auto.SecondAuto;
-import frc.robot.Auto.ThirdAuto;
-import frc.robot.Auto.ZeroAuto;
-import frc.robot.Constants.JoystickConstants;
-import frc.robot.commands.Drive;
-import frc.robot.commands.LowerArm;
-import frc.robot.commands.RaiseArm;
-import frc.robot.commands.RunIntake;
-import frc.robot.commands.RunIntakeBackwards;
-import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Intake;
+import frc.robot.Auto.*;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 public class RobotContainer {
 
@@ -45,10 +33,10 @@ public class RobotContainer {
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
   private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
-  private final LowerArm lowerArm = new LowerArm(arm);
-  private final RaiseArm raiseArm = new RaiseArm(arm);
-  private final RunIntake runIntake = new RunIntake(intake);
-  private final RunIntakeBackwards runIntakeBackwards = new RunIntakeBackwards(intake);
+  private final MoveArm lowerArm = new MoveArm(arm, false);
+  private final MoveArm raiseArm = new MoveArm(arm, true);
+  private final RunIntake runIntake = new RunIntake(intake, true);
+  private final RunIntake runIntakeBackwards = new RunIntake(intake, false);
 
   // Auto
   private final ZeroAuto zeroAuto = new ZeroAuto();
