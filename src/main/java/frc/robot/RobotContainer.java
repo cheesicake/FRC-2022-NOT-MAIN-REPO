@@ -19,14 +19,13 @@ public class RobotContainer {
   private Joystick rightJoystick = new Joystick(Constants.JoystickConstants.rightJoystickPort);
   private Joystick secondaryJoystick = new Joystick(Constants.JoystickConstants.secondaryJoystickPort);
 
-  // TODO:REMOVE ALL EXAMPLE BUTTONS, COMMANDS, METHODS AFTER WEEK 1
 
   // Buttons
   private final JoystickButton exampleButton = new JoystickButton(secondaryJoystick, 1);
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
-  private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
+
 
   // Auto
   private final ZeroAuto zeroAuto = new ZeroAuto();
@@ -44,7 +43,6 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     drivetrain.setDefaultCommand(drive);
-    exampleButton.whenHeld(exampleCommand); // Example Code
   }
 
   private void configureAutos() {
