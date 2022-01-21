@@ -21,7 +21,7 @@ public class Intake extends SubsystemBase {
     public void runIntakeBackwards() {
         intakeSpark.set(Constants.IntakeAndArmConstants.backwardsIntakeSpeed);
     }
-    public void stopIntake() {
+    public void stopIntake() { //stops the intake
         intakeSpark.set(0);
     }
 
