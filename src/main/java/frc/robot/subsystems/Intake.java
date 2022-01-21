@@ -21,6 +21,9 @@ public class Intake extends SubsystemBase {
     public void runIntakeBackwards() {
         intakeSpark.set(Constants.IntakeAndArmConstants.backwardsIntakeSpeed);
     }
+    public void stopIntake() {
+        intakeSpark.set(0);
+    }
 
     public CANSparkMax getIntakeSpark() {
         return intakeSpark;

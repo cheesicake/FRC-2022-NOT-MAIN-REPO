@@ -17,7 +17,7 @@ public class MoveArm extends CommandBase{
 
     @Override
     public void execute() {
-        if (direction == true) {
+        if (direction) {
             arm.raiseArm();
         }
         else {

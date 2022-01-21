@@ -23,6 +23,9 @@ public class Arm extends SubsystemBase{
         armSpark.set(IntakeAndArmConstants.lowerArmSpeed);
     }
 
+    public void stopArm() {
+        armSpark.set(0);
+    }
     public CANSparkMax getArmSpark() {
         return armSpark;
     }
