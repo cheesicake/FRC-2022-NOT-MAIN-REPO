@@ -8,10 +8,12 @@ public class RunIntakeBackwards extends CommandBase{
 
     public RunIntakeBackwards(Intake intake) {
         this.intake = intake;
+
+        addRequirements(intake);
     }
 
     @Override
     public void execute() {
-        intake.runIntakeBackwards();
+        intake.set(false);
     }
 }

@@ -9,12 +9,12 @@ public class RunIntake extends CommandBase{
 
     public RunIntake(Intake intake) {
         this.intake = intake;
+
+        addRequirements(intake);
     }
 
     @Override
     public void execute() {
-        intake.runIntake();
+        intake.set(true); // run forwards
     }
-
-    
 }

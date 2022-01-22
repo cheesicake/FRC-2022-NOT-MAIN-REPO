@@ -15,6 +15,5 @@ public class RaiseArm extends CommandBase{
     public void execute() {
         arm.raiseArm();
     }
-
 }
 

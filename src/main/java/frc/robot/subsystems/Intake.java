@@ -16,11 +16,7 @@ public class Intake extends SubsystemBase implements SingleMotorSubsystem {
     }
 
     public void set(boolean dir) {
-        if (dir) {
-            intakeSpark.set(Constants.IntakeAndArmConstants.intakeSpeed);
-        } else {
-            intakeSpark.set(-Constants.IntakeAndArmConstants.intakeSpeed);
-        }
+        intakeSpark.set((dir ? 1.0 : -1.0) * Constants.IntakeAndArmConstants.intakeSpeed);
     }
     public void stop() {
         intakeSpark.set(0.0);
