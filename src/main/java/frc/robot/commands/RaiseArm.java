@@ -9,11 +9,13 @@ public class RaiseArm extends CommandBase{
 
     public RaiseArm(Arm arm) {
         this.arm = arm;
+
+        addRequirements(arm);
     }
 
     @Override
     public void execute() {
-        arm.raiseArm();
+        arm.set(true);
     }
 }
 

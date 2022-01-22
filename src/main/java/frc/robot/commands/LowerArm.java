@@ -9,11 +9,12 @@ public class LowerArm extends CommandBase{
 
     public LowerArm(Arm arm) {
         this.arm = arm;
+
+        addRequirements(arm);
     }
 
     @Override
     public void execute() {
-        arm.lowerArm();
+        arm.set(false);
     }
-
 }

@@ -55,8 +55,7 @@ public class Constants {
 
         public final static double feederSpeed = 0.3;
         
-        public final static double raiseArmSpeed = 0.1;
-        public final static double lowerArmSpeed = -0.1;
+        public final static double armSpeed = 0.1;
 
     }
 

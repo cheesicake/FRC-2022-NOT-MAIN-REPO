@@ -8,7 +8,7 @@ import frc.robot.Auto.FirstAuto;
 import frc.robot.Auto.SecondAuto;
 import frc.robot.Auto.ThirdAuto;
 import frc.robot.Auto.ZeroAuto;
-import frc.robot.Constants.*;
+import frc.robot.Constants;
 import frc.robot.commands.Drive;
 import frc.robot.commands.LowerArm;
 import frc.robot.commands.RaiseArm;
