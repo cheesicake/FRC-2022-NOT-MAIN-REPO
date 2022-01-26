@@ -35,6 +35,8 @@ public class Constants {
             public final static int runIntakeBackwards = 3;
             public final static int runFeeder = 4;
             public final static int runShooter = 5;
+            public final static int raiseClimber = 6;
+            public final static int lowerClimber = 7;
         }
     
         

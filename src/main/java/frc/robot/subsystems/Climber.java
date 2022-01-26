@@ -11,13 +11,21 @@ public class Climber extends SubsystemBase{
     private CANSparkMax climberSparkMotorOne;
     private CANSparkMax climberSparkMotorTwo;
 
+    public static enum ClimberState {
+        RAISE,
+        LOWER
+    }
+
+
     private MotorControllerGroup climberSparks;
+    private ClimberState climberState;
 
     public Climber() {
         climberSparkMotorOne = new CANSparkMax(Constants.CanIds.climberSpark1, MotorType.kBrushless);
         climberSparkMotorTwo = new CANSparkMax(Constants.CanIds.climberSpark2, MotorType.kBrushless);
 
         climberSparks = new MotorControllerGroup(climberSparkMotorOne, climberSparkMotorTwo);
+        climberState = ClimberState.LOWER;
 
     }
     
@@ -27,10 +35,19 @@ public class Climber extends SubsystemBase{
     }
 
     public void lowerClimber() {
-        climberSparks.set(Constants);
+        climberSparks.set(Constants.ClimberConstants.lowerClimberSpeed);
     }
 
     public MotorControllerGroup getClimberGroup() {
         return climberSparks;
+    }
+
+    public void runClimber(ClimberState climberState) {
+        this.climberState = climberState;
+        if (this.climberState == ClimberState.RAISE) {
+            raiseClimber();
+        } else if (this.climberState == ClimberState.LOWER) {
+            lowerClimber();
+        }
     }
 }
