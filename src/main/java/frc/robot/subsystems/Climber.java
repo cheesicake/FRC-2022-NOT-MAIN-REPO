@@ -50,4 +50,8 @@ public class Climber extends SubsystemBase{
             lowerClimber();
         }
     }
+
+    public void close() {
+        climberSparks.close();
+    }
 }
