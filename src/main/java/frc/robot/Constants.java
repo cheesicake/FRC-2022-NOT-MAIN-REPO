@@ -1,5 +1,7 @@
 package frc.robot;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+
 import java.lang.Math;
 
 public class Constants {
@@ -54,9 +56,18 @@ public class Constants {
 
     }
     
-    public class ClimberConstants {
-        public final static double raiseClimberSpeed = 0.1;
-        public final static double lowerClimberSpeed = -0.1;
+    public static class ClimberConstants {
+        public final static int encoderChannelA = 2;
+        public final static int encoderChannelB = 3;
+        public final static Boolean encoderReverse = false;
+        public final static EncodingType encodingType = EncodingType.k1X;
+
+        public final static double kP = 0;
+        public final static double kI = 0;
+        public final static double kD = 0;
+
+        public final static int pidLowSetPoint = 0;
+        public final static int pidHighSetPoint = 0;
     }
 
      

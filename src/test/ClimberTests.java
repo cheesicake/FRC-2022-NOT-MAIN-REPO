@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.After;
 import frc.robot.commands.Climb;
 import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.Climber.ClimberState;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,10 +18,18 @@ public class ClimberTests {
     }
 
     @Test
-    public void testClimberSpeed() {
-        System.out.println("Climber speed should be 0.1");
-        climber.runClimber(ClimberState.RAISE);
-        assertEquals(climber.getClimberGroup().get(), 0.1, delta);
+    public void climberEncoderTest() {
+        System.out.println("Climber Encoder should output a number");
+        System.out.println("Encoder output: " + climber.getEncoderRaw());
+        assertEquals(climber.getEncoderRaw(), 0, delta);
+    }
+
+    @Test
+    public void climberPidTest() {
+        System.out.println("Climber PID should output a number");
+        System.out.println("PID output: " + climber.calculatePID(0, 0));
+        climber.resetPID();
+        assertEquals(climber.calculatePID(0, 0), 0, delta);
     }
 
     @After
