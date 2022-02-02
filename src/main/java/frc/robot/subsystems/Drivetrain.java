@@ -26,7 +26,7 @@ public class Drivetrain extends SubsystemBase {
     private MotorControllerGroup leftMotors;
     private MotorControllerGroup rightMotors;
 
-    private Pigeon2 pigeon;
+    private PigeonIMU pigeon;
 
     private DifferentialDriveKinematics kinematics;
     private DifferentialDriveOdometry odometry;
@@ -44,7 +44,7 @@ public class Drivetrain extends SubsystemBase {
         leftMotors = new MotorControllerGroup(leftFrontTalon, leftRearTalon);
         rightMotors = new MotorControllerGroup(rightFrontTalon, rightRearTalon);
 
-        pigeon = new Pigeon2(Constants.CanIds.pigeonId);
+        pigeon = new PigeonIMU(Constants.CanIds.pigeonId);
 
         // TODO: Need to See Which Ones Are Inverted
 
