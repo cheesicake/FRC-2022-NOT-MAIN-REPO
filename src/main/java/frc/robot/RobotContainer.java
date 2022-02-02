@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.auto.FirstAuto;
-import frc.robot.auto.SecondAuto;
-import frc.robot.auto.ThirdAuto;
-import frc.robot.auto.ZeroAuto;
+import frc.robot.Auto.FirstAuto;
+import frc.robot.Auto.SecondAuto;
+import frc.robot.Auto.ThirdAuto;
+import frc.robot.Auto.ZeroAuto;
 import frc.robot.commands.Drive;
 import frc.robot.subsystems.Drivetrain;
 
