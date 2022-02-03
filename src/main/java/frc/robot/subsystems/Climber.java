@@ -84,6 +84,8 @@ public class Climber extends SubsystemBase{
 
     public void close() {
         climberSparks.close();
+        climberSparkMotorOne.close();
+        climberSparkMotorTwo.close();
         encoder.close();
         pid.close();
     }
