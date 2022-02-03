@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 
-public class Drivetrain extends SubsystemBase{
+public class Drivetrain extends SubsystemBase {
     private WPI_TalonFX rightFrontTalon;
     private WPI_TalonFX rightRearTalon;
     private WPI_TalonFX leftFrontTalon;
@@ -17,6 +17,7 @@ public class Drivetrain extends SubsystemBase{
     private MotorControllerGroup rightMotors;
 
     private Pigeon2 pigeon;
+
 
     public Drivetrain() {
         rightFrontTalon = new WPI_TalonFX(Constants.CanIds.rightFrontTalon);
@@ -31,8 +32,11 @@ public class Drivetrain extends SubsystemBase{
 
         //TODO: Need to See Which Ones Are Inverted
 
+
         leftMotors.setInverted(true);
         rightMotors.setInverted(false);
+
+        
     }
 
     public void drive(double leftSpeed, double rightSpeed) {
@@ -46,6 +50,43 @@ public class Drivetrain extends SubsystemBase{
 
     public double getRightPosition() {
         return rightFrontTalon.getSelectedSensorPosition();
+
+    public void stop(){
+        leftMotors.set(0);
+        rightMotors.set(0);
+    }
+
+
+
+
+    @Override
+    public void periodic() {
+        
+    }
+    
+
+    public void zeroSensors() {
+        zeroEncoders();
+    }
+
+    public void zeroEncoders() {
+        leftFrontTalon.setSelectedSensorPosition(0);
+        rightFrontTalon.setSelectedSensorPosition(0);
+        leftRearTalon.setSelectedSensorPosition(0);
+        rightRearTalon.setSelectedSensorPosition(0);
+    }
+
+    //Return Position from Integrated Encoders from TalonFXs 
+
+    /*
+        Need to Check How Accurate This Is
+    */
+    public double getLeftPosition() {
+        return leftFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
+    }
+
+    public double getRightPosition() {
+        return rightFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
     }
 
     public double getRightVelocity() {
