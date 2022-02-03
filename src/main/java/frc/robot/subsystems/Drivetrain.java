@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+
 public class Drivetrain extends SubsystemBase {
     private WPI_TalonFX rightFrontTalon;
     private WPI_TalonFX rightRearTalon;
@@ -29,7 +30,8 @@ public class Drivetrain extends SubsystemBase {
 
         pigeon = new Pigeon2(Constants.CanIds.pigeonId);
 
-        // TODO: Need to See Which Ones Are Inverted
+        //TODO: Need to See Which Ones Are Inverted
+
 
         leftMotors.setInverted(true);
         rightMotors.setInverted(false);
@@ -41,6 +43,13 @@ public class Drivetrain extends SubsystemBase {
         leftMotors.set(leftSpeed);
         rightMotors.set(rightSpeed);
     }
+
+    public double getLeftPosition() {
+        return leftFrontTalon.getSelectedSensorPosition();
+    }
+
+    public double getRightPosition() {
+        return rightFrontTalon.getSelectedSensorPosition();
 
     public void stop(){
         leftMotors.set(0);
