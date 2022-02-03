@@ -9,15 +9,14 @@ import java.lang.Math;
 public class Constants {
 
     public class CanIds {
-
         public final static int pigeonId = 0;
         public final static int rightFrontTalon = 1;
         public final static int rightRearTalon = 2;
         public final static int leftFrontTalon = 3;
         public final static int leftRearTalon = 4;
 
-        public final static int intakeSpark1 = 5;
-        public final static int intakeSpark2 = 6;
+        public final static int intakeSpark = 5;
+        public final static int armSpark = 6;
         public final static int feederSpark1 = 7;
         public final static int feederSpark2 = 8;
         public final static int feederSpark3 = 9;
@@ -41,8 +40,9 @@ public class Constants {
             public final static int runShooter = 5;
             public final static int raiseClimber = 6;
             public final static int lowerClimber = 7;
-   }
-
+        }
+    }
+    
     public static class DriveTrainConstants {
         public final static double kP = 0.5;
         public final static double kI = 0;
@@ -65,6 +65,26 @@ public class Constants {
         public final static int pidLowSetPoint = 0;
         public final static int pidHighSetPoint = 0;
     }
+
+    public static class IntakeAndArmConstants {
+        public final static double intakeSpeed = 0.3;
+        public final static double backwardsIntakeSpeed = -0.3;
+        
+        public final static double raiseArmSpeed = 0.1;
+        public final static double lowerArmSpeed = -0.1;
+
+        public final static int encoderChannelA = 0;
+        public final static int encoderChannelB = 1;
+        public final static boolean encoderReverse = false;
+        public final static EncodingType encodingType = EncodingType.k1X;
+
+        public final static int kP = 0;
+        public final static int kI = 0;
+        public final static int kD = 0;
+        
+        public final static int pidLowSetPoint = 0;
+        public final static int pidHighSetPoint = 0;
+        }
 
      
 }
