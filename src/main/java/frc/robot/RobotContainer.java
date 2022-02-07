@@ -51,7 +51,6 @@ public class RobotContainer {
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
-  private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
   private final MoveArm lowerArm = new MoveArm(arm, ArmState.LOW);
   private final MoveArm raiseArm = new MoveArm(arm, ArmState.HIGH);
   private final RunIntake runIntake = new RunIntake(intake, true);
