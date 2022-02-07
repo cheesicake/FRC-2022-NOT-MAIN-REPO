@@ -15,7 +15,7 @@ public class IntakeTest {
     @Test
     public void test() {
         System.out.println("when runIntake, will the intakeSpark run at the speeds the Constants define");
-        intake.runIntake();
+        intake.runIntake(Intake.Direction.FORWARD);
         assertEquals(0.3, intake.getIntakeSpark().get(),0.1);
     }
 

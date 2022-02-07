@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Auto.*;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import frc.robot.subsystems.Intake.Direction;;
 
 public class RobotContainer {
 
@@ -35,8 +36,8 @@ public class RobotContainer {
   private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
   private final MoveArm lowerArm = new MoveArm(arm, false);
   private final MoveArm raiseArm = new MoveArm(arm, true);
-  private final RunIntake runIntake = new RunIntake(intake, true);
-  private final RunIntake runIntakeBackwards = new RunIntake(intake, false);
+  private final RunIntake runIntake = new RunIntake(intake, Direction.FORWARD);
+  private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARD);
 
   // Auto
   private final ZeroAuto zeroAuto = new ZeroAuto();
