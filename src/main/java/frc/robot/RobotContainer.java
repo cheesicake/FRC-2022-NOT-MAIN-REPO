@@ -13,8 +13,10 @@ import frc.robot.auto.SecondAuto;
 import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
 import frc.robot.commands.Climb;
+import frc.robot.commands.RunFeeder;
 import frc.robot.commands.Drive;
 import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.Feeder;
 import frc.robot.auto.FirstAuto;
 import frc.robot.auto.SecondAuto;
 import frc.robot.auto.ThirdAuto;
@@ -33,6 +35,8 @@ public class RobotContainer {
   private Intake intake = new Intake();
   private Arm arm = new Arm();
   private Climber climber = new Climber();
+  private final Feeder feeder = new Feeder();
+  
 
 
   //Joysticks
@@ -48,6 +52,8 @@ public class RobotContainer {
   private final JoystickButton lowerArmButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerArm);
   private final JoystickButton raiseClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseClimber);
   private final JoystickButton lowerClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerClimber);
+  private final JoystickButton runFeederButton= new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runFeeder);
+
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
@@ -57,6 +63,7 @@ public class RobotContainer {
   private final RunIntake runIntakeBackwards = new RunIntake(intake, false);
   private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
   private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
+  private final RunFeeder runFeeder = new RunFeeder(feeder);
  
   
   // Auto
@@ -86,7 +93,7 @@ public class RobotContainer {
     lowerArmButton.whenHeld(lowerArm);
     raiseClimberButton.whenHeld(raiseClimber);
     lowerClimberButton.whenHeld(lowerClimber);
-
+    runFeederButton.whenHeld(runFeeder);
 
   }
 
