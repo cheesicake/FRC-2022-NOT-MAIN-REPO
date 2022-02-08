@@ -23,6 +23,7 @@ public class IntakeAndArmTests {
     @Test
     public void intakeTest() {
         System.out.println("when runIntake, will the intakeSpark run at the speeds the Constants define");
+        intake.runIntake(Direction.FORWARD);
         assertEquals(0.3, intake.getIntakeSpark().get(), delta);
     }
 

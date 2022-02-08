@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -12,6 +13,10 @@ public class Intake extends SubsystemBase {
     public static enum Direction {
         FORWARD,
         BACKWARD
+    }
+
+    public Intake() {
+        intakeSpark = new CANSparkMax(Constants.CanIds.intakeSpark, MotorType.kBrushless);
     }
 
     public void runIntake(Direction forward) {
@@ -40,4 +45,3 @@ public class Intake extends SubsystemBase {
     }
 
 }
-
