@@ -62,15 +62,21 @@ public class RobotContainer {
 
   private final SendableChooser<Command> sendableChooser = new SendableChooser<>();
 
+
+
   public RobotContainer() {
-    // Configure the button bindings
     configureButtonBindings();
     configureAutos();
     zeroSubsystems();
   }
 
+  public void periodic() {
+
+  }  
+
   private void zeroSubsystems() {
     arm.zeroArm();
+    climber.zeroClimber();
   }
 
   private void configureButtonBindings() {
@@ -85,7 +91,6 @@ public class RobotContainer {
 
   private void configureAutos() {
     // TODO: Rename Autos on Dashboard
-
     sendableChooser.setDefaultOption("No Auto", zeroAuto);
     sendableChooser.addOption("First Auto", firstAuto);
     sendableChooser.addOption("Second Auto", secondAuto);

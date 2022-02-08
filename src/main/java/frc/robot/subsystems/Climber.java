@@ -82,6 +82,12 @@ public class Climber extends SubsystemBase{
         }
     }
 
+    public void zeroClimber() {
+        pid.reset();
+        climberState = ClimberState.LOWER;
+        runClimber(ClimberState.LOWER);
+    }
+
     public void close() {
         climberSparks.close();
         climberSparkMotorOne.close();

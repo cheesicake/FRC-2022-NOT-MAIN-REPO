@@ -2,7 +2,6 @@ package subsystems;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-import frc.robot.commands.RunIntake;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Intake.Direction;
 import frc.robot.subsystems.Arm;
