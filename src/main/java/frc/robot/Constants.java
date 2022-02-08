@@ -15,6 +15,7 @@ public class Constants {
         public final static int leftFrontTalon = 3;
         public final static int leftRearTalon = 4;
 
+
         public final static int intakeSpark = 5;
         public final static int armSpark = 6;
         public final static int feederSpark1 = 7;
@@ -64,6 +65,14 @@ public class Constants {
 
         public final static int pidLowSetPoint = 0;
         public final static int pidHighSetPoint = 0;
+    }
+    public class IntakeAndArmConstants {
+        public final static double intakeSpeed = 0.3;
+        public final static double backwardsIntakeSpeed = -0.3;
+        
+        public final static double raiseArmSpeed = 0.1;
+        public final static double lowerArmSpeed = -0.1;
+
     }
 
     public static class IntakeAndArmConstants {
