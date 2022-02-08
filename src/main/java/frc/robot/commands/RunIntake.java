@@ -7,7 +7,7 @@ import frc.robot.subsystems.Intake.Direction;
 public class RunIntake extends CommandBase{
     
     private Intake intake;
-    private Direction direction; //if true run intake forward, if false run intake backward
+    private Direction direction; 
     public RunIntake(Intake intake, Direction direction) {
         this.intake = intake;
         this.direction = direction;
@@ -18,6 +18,5 @@ public class RunIntake extends CommandBase{
     public void execute() {
         intake.runIntake(direction);
     }
-
     
 }
