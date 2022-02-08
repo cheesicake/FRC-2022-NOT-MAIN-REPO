@@ -2,7 +2,6 @@ package subsystems;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-import frc.robot.commands.Climb;
 import frc.robot.subsystems.Climber;
 
 import static org.junit.Assert.assertEquals;

@@ -5,12 +5,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
-
-
-
-
-
-import frc.robot.auto.*;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.auto.FirstAuto;
@@ -20,11 +14,6 @@ import frc.robot.auto.ZeroAuto;
 import frc.robot.commands.Climb;
 import frc.robot.commands.Drive;
 import frc.robot.subsystems.Climber;
-import frc.robot.auto.FirstAuto;
-import frc.robot.auto.SecondAuto;
-import frc.robot.auto.ThirdAuto;
-import frc.robot.auto.ZeroAuto;
-
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Arm.ArmState;
