@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Arm.ArmState;
 
 public class LowerArm extends CommandBase{
     
@@ -15,6 +16,6 @@ public class LowerArm extends CommandBase{
 
     @Override
     public void execute() {
-        arm.set(false);
+        arm.runArm(ArmState.LOW);
     }
 }
