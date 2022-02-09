@@ -6,7 +6,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Feeder extends SubsystemBase implements SingleMotorSubsystem {
+public class Feeder extends SubsystemBase {
     private CANSparkMax feederMotor;
 
     public Feeder() {

@@ -14,7 +14,6 @@ public class FeederTests {
     private static final double delta = 0.01;
     Feeder feeder;
 
-
     @Before
     public void setup() {
         feeder = new Feeder();
@@ -28,9 +27,15 @@ public class FeederTests {
         assertEquals(Constants.FeederConstants.feederSpeed, feeder.getMotor().get(), delta);
     }
 
+    @Test
+    public void feederSubsystemTest(){
+        System.out.println("Feeder Subsystem should set its motor speed to the speed set in the constants");
+        this.feeder.set(true);
+        assertEquals(Constants.FeederConstants.feederSpeed, this.feeder.getMotor().get(), delta);
+    }
+
     @After
     public void shutdown() {
         feeder.close();
     }
-
 }
