@@ -10,12 +10,16 @@ import frc.robot.Auto.SecondAuto;
 import frc.robot.Auto.ThirdAuto;
 import frc.robot.Auto.ZeroAuto;
 import frc.robot.commands.Drive;
+import frc.robot.commands.RunNeck;
+import frc.robot.commands.Shoot;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Shooter;
 
 
 public class RobotContainer {
   
   private Drivetrain drivetrain = new Drivetrain();
+  private Shooter shooter = new Shooter();
 
   private Joystick leftJoystick = new Joystick(Constants.JoystickConstants.leftJoystickPort);
   private Joystick rightJoystick = new Joystick(Constants.JoystickConstants.rightJoystickPort);
@@ -25,11 +29,14 @@ public class RobotContainer {
 
   //Buttons
   private final JoystickButton exampleButton = new JoystickButton(secondaryJoystick, 1);
-
+  private final JoystickButton shootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runShooter);
+  private final JoystickButton runNeckButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runNeck);
 
   //Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
   private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
+  private final Shoot shoot = new Shoot(shooter);
+  private final RunNeck runNeck = new RunNeck(shooter);
   
 
   //Auto
@@ -50,6 +57,8 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     drivetrain.setDefaultCommand(drive);
+    shootButton.whenHeld(shoot);
+    runNeckButton.whenHeld(runNeck);
     exampleButton.whenHeld(exampleCommand); //Example Code 
   }
 
