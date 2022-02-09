@@ -1,14 +1,20 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+<<<<<<< HEAD
 import com.ctre.phoenix.sensors.Pigeon2;
+=======
+>>>>>>> a17a2ce1da8f914c57ea02eedc1210672d2f5ad3
 
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a17a2ce1da8f914c57ea02eedc1210672d2f5ad3
 
-public class Drivetrain extends SubsystemBase{
+public class Drivetrain extends SubsystemBase {
     private WPI_TalonFX rightFrontTalon;
     private WPI_TalonFX rightRearTalon;
     private WPI_TalonFX leftFrontTalon;
