@@ -6,9 +6,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-import com.revrobotics.CANSparkMax;
 
-public class Intake extends SubsystemBase implements SingleMotorSubsystem {
+public class Intake extends SubsystemBase {
     private CANSparkMax intakeSpark;
 
     public Intake() {
@@ -24,5 +23,9 @@ public class Intake extends SubsystemBase implements SingleMotorSubsystem {
 
     public CANSparkMax getMotor() { // why
         return this.intakeSpark;
+    }
+
+    public void close() {
+        this.intakeSpark.close();
     }
 }

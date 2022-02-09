@@ -3,31 +3,28 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-import com.revrobotics.CANSparkMax;
-
 public class Feeder extends SubsystemBase implements SingleMotorSubsystem {
-    private MotorControllerGroup feederMotors;
+    private CANSparkMax feederMotor;
 
     public Feeder() {
-        feederMotors = new MotorControllerGroup(
-            new CANSparkMax(Constants.CanIds.feederSpark1, MotorType.kBrushless),
-            new CANSparkMax(Constants.CanIds.feederSpark2, MotorType.kBrushless),
-            new CANSparkMax(Constants.CanIds.feederSpark3, MotorType.kBrushless)
-        );
+        feederMotor = new CANSparkMax(Constants.CanIds.feederSpark1, MotorType.kBrushless);
     }
 
     public void set(boolean dir) {
-        feederMotors.set((dir ? 1.0 : 0.0 )*Constants.IntakeAndArmConstants.feederSpeed);
+        feederMotor.set((dir ? 1.0 : 0.0 )*Constants.FeederConstants.feederSpeed);
     }
     public void stop() {
-        feederMotors.set(0.0);
+        feederMotor.set(0.0);
     }
 
-    public MotorControllerGroup getMotor() {
-        return this.feederMotors;
+    public CANSparkMax getMotor() {
+        return this.feederMotor;
+    }
+
+    public void close(){
+        feederMotor.close();
     }
 }
