@@ -13,6 +13,10 @@ import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
 import frc.robot.commands.Climb;
 import frc.robot.commands.Drive;
+import frc.robot.commands.RunNeck;
+import frc.robot.commands.Shoot;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Climber;
 
 import frc.robot.subsystems.Drivetrain;
@@ -20,12 +24,11 @@ import frc.robot.subsystems.Arm.ArmState;
 import frc.robot.subsystems.Climber.ClimberState;
 import frc.robot.subsystems.Intake.Direction;
 
-
-
 public class RobotContainer {
 
   //Subsystems
   private Drivetrain drivetrain = new Drivetrain();
+  private Shooter shooter = new Shooter();
   private Intake intake = new Intake();
   private Arm arm = new Arm();
   private Climber climber = new Climber();
@@ -44,6 +47,21 @@ public class RobotContainer {
   private final JoystickButton raiseClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseClimber);
   private final JoystickButton lowerClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerClimber);
 
+  // Buttons
+  private final JoystickButton exampleButton = new JoystickButton(secondaryJoystick, 1);
+  private final JoystickButton shootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runShooter);
+  private final JoystickButton runNeckButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runNeck);
+
+  //Commands
+  private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
+  private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
+  private final Shoot shoot = new Shoot(shooter);
+  private final RunNeck runNeck = new RunNeck(shooter);
+  
+
+  // Commands
+  private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
+  private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
@@ -81,6 +99,8 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     drivetrain.setDefaultCommand(drive);
+    shootButton.whenHeld(shoot);
+    runNeckButton.whenHeld(runNeck);
     runIntakeButton.whenHeld(runIntake);
     runIntakeBackwardsButton.whenHeld(runIntakeBackwards);
     raiseArmButton.whenHeld(raiseArm);
