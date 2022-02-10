@@ -18,8 +18,6 @@ import frc.robot.commands.Shoot;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Climber;
-
-import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Arm.ArmState;
 import frc.robot.subsystems.Climber.ClimberState;
 import frc.robot.subsystems.Intake.Direction;
@@ -52,16 +50,7 @@ public class RobotContainer {
   private final JoystickButton shootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runShooter);
   private final JoystickButton runNeckButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runNeck);
 
-  //Commands
-  private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
-  private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
-  private final Shoot shoot = new Shoot(shooter);
-  private final RunNeck runNeck = new RunNeck(shooter);
   
-
-  // Commands
-  private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
-  private final Drive exampleCommand = new Drive(drivetrain, leftJoystick, rightJoystick);
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
@@ -71,6 +60,8 @@ public class RobotContainer {
   private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARD);
   private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
   private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
+  private final Shoot shoot = new Shoot(shooter);
+  private final RunNeck runNeck = new RunNeck(shooter);
  
   // Auto
   private final ZeroAuto zeroAuto = new ZeroAuto();
