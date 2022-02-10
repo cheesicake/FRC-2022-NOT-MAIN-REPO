@@ -3,8 +3,6 @@ package frc.robot;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 
-
-
 import java.lang.Math;
 
 public class Constants {
@@ -16,7 +14,6 @@ public class Constants {
         public final static int rightRearTalon = 2;
         public final static int leftFrontTalon = 3;
         public final static int leftRearTalon = 4;
-
         public final static int intakeSpark = 5;
         public final static int armSpark = 6;
         public final static int feederSpark1 = 7;
@@ -40,23 +37,26 @@ public class Constants {
         public class SecondaryJoystick { // Temporary Buttons for Controls meant for Week 1 Teams to use
             public final static int lowerArm = 0; // Implement PID System to preset these positions
             public final static int raiseArm = 1;
-            public final static int runIntakeForward = 2;
+            public final static int runIntakeForwards = 2;
             public final static int runIntakeBackwards = 3;
-            public final static int runFeeder = 4;
-            public final static int runShooter = 5;
-            public final static int raiseClimber = 6;
-            public final static int lowerClimber = 7;
-            public final static int runNeck = 8;
+
+            public final static int runFeederForwards = 4;
+            public final static int runFeederBackwards = 5;
+            public final static int runShooter = 6;
+            public final static int raiseClimber = 7;
+            public final static int lowerClimber = 8;
+            public final static int runNeck = 9;
+
         }
     }
-    
+
     public static class DriveTrainConstants {
         public final static double kP = 0.5;
         public final static double kI = 0;
         public final static double kD = 0;
         public final static double metersPerRev = Units.metersToInches(3) * 2 * Math.PI;
-
-        public final double trackWidth = Units.inchesToMeters(25); // TODO: Need To Determine In Meters
+        
+        public final static double trackWidth = Units.inchesToMeters(25);
     }
     
     public static class ClimberConstants {
@@ -91,7 +91,6 @@ public class Constants {
         
         public final static int pidLowSetPoint = 0;
         public final static int pidHighSetPoint = 0;
-        
     }
 
 
@@ -99,6 +98,8 @@ public class Constants {
         public final static double shootSpeed = 1.0;
         public final static double neckSpeed = 0.5;
     }
-    
-}
 
+    public static class FeederConstants {
+        public final static double feederSpeed = 0.3;
+    }
+}

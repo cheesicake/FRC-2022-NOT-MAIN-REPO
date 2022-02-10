@@ -19,6 +19,13 @@ public class Intake extends SubsystemBase {
         intakeSpark = new CANSparkMax(Constants.CanIds.intakeSpark, MotorType.kBrushless);
     }
 
+
+    public void set(boolean dir) {
+        intakeSpark.set((dir ? 1.0 : -1.0) * Constants.IntakeAndArmConstants.intakeSpeed);
+    }
+    public void stop() {
+        intakeSpark.set(0.0);
+
     public void runIntake(Direction forward) {
         this.direction = forward;
         switch(forward) {
@@ -36,12 +43,12 @@ public class Intake extends SubsystemBase {
         intakeSpark.set(0);
     }
 
-    public CANSparkMax getIntakeSpark() {
-        return intakeSpark;
+    public CANSparkMax getMotor() { // why
+        return this.intakeSpark;
     }
 
     public void close() {
-        intakeSpark.close();
+        this.intakeSpark.close();
     }
 
 }
