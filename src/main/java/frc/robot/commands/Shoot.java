@@ -13,6 +13,6 @@ public class Shoot extends CommandBase {
 
     @Override
     public void execute() {
-        shooter.Shoot();
+        shooter.shoot();
     }
 }

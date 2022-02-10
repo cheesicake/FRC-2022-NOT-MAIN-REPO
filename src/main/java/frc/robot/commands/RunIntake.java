@@ -21,7 +21,7 @@ public class RunIntake extends CommandBase{
 
     @Override
     public void end(boolean i) {
-        intake.stop();
+        intake.stopIntake();
     }
     
 }

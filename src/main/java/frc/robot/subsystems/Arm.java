@@ -12,7 +12,6 @@ public class Arm extends SubsystemBase{
     private CANSparkMax armSpark;
     private Encoder encoder;
     private PIDController pid;
-
     
     public static enum ArmState {
         LOW,
@@ -47,26 +46,12 @@ public class Arm extends SubsystemBase{
         armSpark.set(speed);
     }
 
-    public CANSparkMax getArmSpark() {
-        return armSpark;
-    }
-
     public int getEncoderRaw() {
         return encoder.getRaw();
     }
 
     public double calculatePID(double encoderRaw, int setPoint) {
         return pid.calculate(encoderRaw, setPoint);
-    }
-
-    public void resetPID() {
-        pid.reset();
-    }
-
-    public void close() {
-        armSpark.close();
-        encoder.close();
-        pid.close();
     }
 
     public void runArm(ArmState armState) {
@@ -81,10 +66,24 @@ public class Arm extends SubsystemBase{
         }
     }
 
+    public void resetPID() {
+        pid.reset();
+    }
+
+    public CANSparkMax getArmSpark() {
+        return armSpark;
+    }
+
     public void zeroArm() {
         pid.reset();
         armState = ArmState.HIGH;
         runArm(armState);
+    }
+
+    public void close() {
+        armSpark.close();
+        encoder.close();
+        pid.close();
     }
 
 }

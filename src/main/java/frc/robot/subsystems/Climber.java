@@ -58,14 +58,6 @@ public class Climber extends SubsystemBase{
         return pid.calculate(encoderRaw, setPoint);
     }
 
-    public void resetPID() {
-        pid.reset();
-    }
-
-    public MotorControllerGroup getClimberGroup() {
-        return climberSparks;
-    }
-
     public int getEncoderRaw() {
         return encoder.getRaw();
     }
@@ -80,6 +72,14 @@ public class Climber extends SubsystemBase{
                 setClimberSpeed(calculatePID(getEncoderRaw(), lowSetPoint));
                 break;
         }
+    }
+
+    public void resetPID() {
+        pid.reset();
+    }
+
+    public MotorControllerGroup getClimberGroup() {
+        return climberSparks;
     }
 
     public void zeroClimber() {

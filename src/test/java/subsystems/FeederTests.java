@@ -23,14 +23,14 @@ public class FeederTests {
         System.out.println("when runFeederCommand, will the feederSpark run at the speeds the Constants define");
         RunFeeder runFeeder = new RunFeeder(feeder, true);
         runFeeder.execute();
-        assertEquals(Constants.FeederConstants.feederSpeed, feeder.getMotor().get(), delta);
+        assertEquals(Constants.FeederConstants.feederSpeed, feeder.getFeederSpark().get(), delta);
     }
 
     @Test
     public void feederSubsystemTest(){
         System.out.println("Feeder Subsystem should set its motor speed to the speed set in the constants");
         this.feeder.set(true);
-        assertEquals(Constants.FeederConstants.feederSpeed, this.feeder.getMotor().get(), delta);
+        assertEquals(Constants.FeederConstants.feederSpeed, this.feeder.getFeederSpark().get(), delta);
     }
 
     @After

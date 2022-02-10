@@ -13,6 +13,6 @@ public class RunNeck extends CommandBase {
 
     @Override
     public void execute() {
-        shooter.RunNeck();
+        shooter.runNeck();
     }
 }
