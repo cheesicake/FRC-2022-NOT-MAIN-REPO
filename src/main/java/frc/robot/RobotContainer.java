@@ -13,7 +13,6 @@ import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
 import frc.robot.commands.Climb;
 import frc.robot.commands.Drive;
-
 import frc.robot.commands.LowerArm;
 import frc.robot.commands.RaiseArm;
 import frc.robot.commands.RunFeeder;
@@ -24,33 +23,21 @@ import frc.robot.subsystems.Climber.ClimberState;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
-
 import frc.robot.commands.RunNeck;
 import frc.robot.commands.Shoot;
-import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Arm.ArmState;
-import frc.robot.subsystems.Climber.ClimberState;
 import frc.robot.subsystems.Intake.Direction;
 
 
 public class RobotContainer {
   //Subsystems
-
   private final Drivetrain drivetrain = new Drivetrain();
   private final Intake intake = new Intake();
   private final Feeder feeder = new Feeder();
   private final Arm arm = new Arm();
   private final Climber climber = new Climber();
-
-  private Drivetrain drivetrain = new Drivetrain();
-  private Shooter shooter = new Shooter();
-  private Intake intake = new Intake();
-  private Arm arm = new Arm();
-  private Climber climber = new Climber();
-
-
+  private final Shooter shooter = new Shooter();
 
   //Joysticks
   private Joystick leftJoystick = new Joystick(Constants.JoystickConstants.leftJoystickPort);
@@ -58,42 +45,29 @@ public class RobotContainer {
   private Joystick secondaryJoystick = new Joystick(Constants.JoystickConstants.secondaryJoystickPort);
 
 
-  // Buttons
-  private final JoystickButton runIntakeForwardsButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runIntakeForwards);
-
   //Buttons
-  private final JoystickButton runIntakeButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runIntakeForward);
 
+  private final JoystickButton runIntakeButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runIntakeForwards);
   private final JoystickButton runIntakeBackwardsButton = new JoystickButton(secondaryJoystick,Constants.JoystickConstants.SecondaryJoystick.runIntakeBackwards);
   private final JoystickButton raiseArmButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseArm);
   private final JoystickButton lowerArmButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerArm);
   private final JoystickButton runFeederForwardsButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runFeederForwards);
   private final JoystickButton runFeederBackwardsButton= new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runFeederBackwards);
-
-  // Buttons
-  private final JoystickButton exampleButton = new JoystickButton(secondaryJoystick, 1);
   private final JoystickButton shootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runShooter);
   private final JoystickButton runNeckButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runNeck);
 
-  
+
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
-
   private final LowerArm lowerArm = new LowerArm(arm);
   private final RaiseArm raiseArm = new RaiseArm(arm);
-  private final RunIntake runIntakeForwards = new RunIntake(intake, Dir.FORWARDS);
-  private final RunIntake runIntakeBackwards = new RunIntake(intake, Dir.BACKWARDS);
-  private final RunFeeder runFeederForwards = new RunFeeder(feeder, Dir.FORWARDS);
-  private final RunFeeder runFeederBackwards = new RunFeeder(feeder, Dir.BACKWARDS);
+  private final RunIntake runIntakeForwards = new RunIntake(intake, Direction.FORWARD);
+  private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARD);
+  private final RunFeeder runFeederForwards = new RunFeeder(feeder, true);
+  private final RunFeeder runFeederBackwards = new RunFeeder(feeder, false);
   private final JoystickButton raiseClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseClimber);
   private final JoystickButton lowerClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerClimber);
-
-  private final MoveArm lowerArm = new MoveArm(arm, ArmState.LOW);
-  private final MoveArm raiseArm = new MoveArm(arm, ArmState.HIGH);
-  private final RunIntake runIntake = new RunIntake(intake, Direction.FORWARD);
-  private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARD);
-
   private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
   private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final Shoot shoot = new Shoot(shooter);
@@ -126,10 +100,9 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     drivetrain.setDefaultCommand(drive);
-    runIntakeForwardsButton.whenHeld(runIntakeForwards);
+    runIntakeButton.whenHeld(runIntakeForwards);
     shootButton.whenHeld(shoot);
     runNeckButton.whenHeld(runNeck);
-    runIntakeButton.whenHeld(runIntake);
     runIntakeBackwardsButton.whenHeld(runIntakeBackwards);
     raiseArmButton.whenHeld(raiseArm);
     lowerArmButton.whenHeld(lowerArm);

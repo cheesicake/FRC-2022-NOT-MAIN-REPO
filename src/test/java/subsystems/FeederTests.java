@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.After;
 
 import frc.robot.Constants;
-import frc.robot.Dir;
 import frc.robot.commands.RunFeeder;
 import frc.robot.subsystems.Feeder;
 
@@ -22,7 +21,7 @@ public class FeederTests {
     @Test
     public void feederCommandTest(){
         System.out.println("when runFeederCommand, will the feederSpark run at the speeds the Constants define");
-        RunFeeder runFeeder = new RunFeeder(feeder,Dir.FORWARDS);
+        RunFeeder runFeeder = new RunFeeder(feeder, true);
         runFeeder.execute();
         assertEquals(Constants.FeederConstants.feederSpeed, feeder.getMotor().get(), delta);
     }

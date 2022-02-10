@@ -1,23 +1,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Dir;
 import frc.robot.subsystems.Feeder;
 
 public class RunFeeder extends CommandBase{
     private Feeder feeder;
-    private Dir dir;
+    private boolean direction;
 
-    public RunFeeder(Feeder feeder, Dir dir) {
+    public RunFeeder(Feeder feeder, boolean direction) {
         this.feeder = feeder;
-        this.dir = dir;
+        this.direction = direction;
 
         addRequirements(feeder);
     }
 
     @Override
     public void execute() {
-        feeder.set(this.dir.equals(Dir.FORWARDS));
+        feeder.set(true);
     }
 
     @Override
