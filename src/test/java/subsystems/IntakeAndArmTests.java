@@ -3,6 +3,7 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Intake.Direction;
 import frc.robot.subsystems.Arm;
 
 import static org.junit.Assert.assertEquals;
@@ -21,8 +22,13 @@ public class IntakeAndArmTests {
     @Test
     public void intakeTest() {
         System.out.println("when runIntake, will the intakeSpark run at the speeds the Constants define");
+
         intake.set(true);
         assertEquals(0.3, intake.getMotor().get(), delta);
+
+        intake.runIntake(Direction.FORWARD);
+        assertEquals(0.3, intake.getIntakeSpark().get(), delta);
+
     }
 
     @Test

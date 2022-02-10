@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Arm.ArmState;
 
+
 public class MoveArm extends CommandBase{
     
     private Arm arm;
@@ -14,6 +15,7 @@ public class MoveArm extends CommandBase{
         this.arm = arm;
         this.armState = armState;
         addRequirements(arm);
+
     }
 
     @Override
@@ -22,3 +24,4 @@ public class MoveArm extends CommandBase{
     }
 
 }
+
