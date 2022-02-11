@@ -47,6 +47,10 @@ public class Constants {
             public final static int lowerClimber = 8;
             public final static int runNeck = 9;
 
+            public final static int moveArmAndIntake = 10;
+            public final static int runIntakeAndFeeder = 11;
+            public final static int runFeederAndShoot = 12;
+            public final static int moveArmIntakeandShoot = 13;
         }
     }
 
