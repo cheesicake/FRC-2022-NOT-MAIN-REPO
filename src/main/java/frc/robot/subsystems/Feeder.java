@@ -10,7 +10,7 @@ public class Feeder extends SubsystemBase {
     private CANSparkMax feederSpark;
 
     public Feeder() {
-        feederSpark = new CANSparkMax(Constants.CanIds.feederSpark1, MotorType.kBrushless);
+        feederSpark = new CANSparkMax(Constants.CanIds.feederSpark, MotorType.kBrushless);
     }
 
     public void set(boolean dir) {

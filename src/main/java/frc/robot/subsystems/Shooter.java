@@ -12,13 +12,13 @@ public class Shooter extends SubsystemBase {
     private WPI_TalonFX shooterTalonLeft;
     private WPI_TalonFX shooterTalonRight;
 
-    private VictorSP neckVictorSP;
+    private CANSparkMax neckSpark;
 
     public Shooter() {
         shooterTalonLeft = new WPI_TalonFX(Constants.CanIds.shooterTalonLeft);
         shooterTalonRight = new WPI_TalonFX(Constants.CanIds.shooterTalonRight);
 
-        neckVictorSP = new VictorSP(0);
+        neckSpark = new CANSparkMax(Constants.CanIds.neckSpark,MotorType.kBrushless);
 
         shooterTalonLeft.setInverted(true);
     }
@@ -29,6 +29,6 @@ public class Shooter extends SubsystemBase {
     }
 
     public void runNeck() {
-        neckVictorSP.set(Constants.ShooterConstants.neckSpeed);
+        neckSpark.set(Constants.ShooterConstants.neckSpeed);
     }
 }
