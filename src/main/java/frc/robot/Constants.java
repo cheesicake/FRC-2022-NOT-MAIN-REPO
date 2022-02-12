@@ -57,6 +57,11 @@ public class Constants {
         public final static double metersPerRev = Units.metersToInches(3) * 2 * Math.PI;
         
         public final static double trackWidth = Units.inchesToMeters(25);
+        
+        //TODO: Need to get actual values later from the characterization tool.
+        public static final double kS = 1;
+        public static final double kV = 1;
+        public static final double kA = 1;
     }
     
     public static class ClimberConstants {
@@ -71,6 +76,14 @@ public class Constants {
 
         public final static int pidLowSetPoint = 0;
         public final static int pidHighSetPoint = 0;
+        public final double trackWidth = Units.inchesToMeters(25); // TODO: Need To Determine In Meters
+
+
+        //Need to get actual values later from the characterization tool.
+        public static final  double kS = 1;
+        public static final double kV = 1;
+        public static final double kA = 1;
+
     }
 
     public static class IntakeAndArmConstants {
