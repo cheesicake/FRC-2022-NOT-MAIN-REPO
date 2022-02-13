@@ -91,7 +91,8 @@ public class Arm extends SubsystemBase{
     }
 
     public void close() {
-        armSparks.close();
+        armSpark1.close();
+        armSpark2.close();
         encoder.close();
         pid.close();
     }
