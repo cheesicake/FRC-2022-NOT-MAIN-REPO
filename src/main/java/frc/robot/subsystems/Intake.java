@@ -5,15 +5,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Constants.Direction;
 
 public class Intake extends SubsystemBase {
     private CANSparkMax intakeSpark;
     private Direction direction;
-
-    public static enum Direction {
-        FORWARD,
-        BACKWARD
-    }
 
     public Intake() {
         intakeSpark = new CANSparkMax(Constants.CanIds.intakeSpark, MotorType.kBrushless);
@@ -22,10 +18,10 @@ public class Intake extends SubsystemBase {
     public void runIntake(Direction direction) {
         this.direction = direction;
         switch(direction) {
-            case FORWARD:
+            case FORWARDS:
                 intakeSpark.set(Constants.IntakeAndArmConstants.intakeSpeed);
                 break;
-            case BACKWARD:
+            case BACKWARDS:
                 intakeSpark.set(Constants.IntakeAndArmConstants.backwardsIntakeSpeed);
                 break;
         }

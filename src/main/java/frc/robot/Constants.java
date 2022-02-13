@@ -87,6 +87,11 @@ public class Constants {
 
     }
 
+    public static enum Direction {
+        FORWARDS,
+        BACKWARDS
+    }
+
     public static class IntakeAndArmConstants {
         public final static double intakeSpeed = 0.3;
         public final static double backwardsIntakeSpeed = -0.3;
@@ -107,13 +112,16 @@ public class Constants {
         public final static int pidHighSetPoint = 0;
     }
 
-
-    public static class ShooterConstants {
-        public final static double shootSpeed = 1.0;
-        public final static double neckSpeed = 0.5;
-    }
-
     public static class FeederConstants {
         public final static double feederSpeed = 0.3;
+        public final static double backwardsFeederSpeed = -0.3;
     }
+
+
+    public static class ShooterConstants {
+        public final static double neckSpeed = 0.5;
+        public final static double shootSpeed = 1.0;
+    }
+
+
 }

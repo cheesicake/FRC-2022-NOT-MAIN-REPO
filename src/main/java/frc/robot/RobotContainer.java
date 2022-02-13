@@ -33,7 +33,7 @@ import frc.robot.commands.CommandGroups.FeederAndShoot;
 import frc.robot.commands.CommandGroups.IntakeAndFeeder;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Arm.ArmState;
-import frc.robot.subsystems.Intake.Direction;
+import frc.robot.Constants.Direction;
 
 
 public class RobotContainer {
@@ -72,10 +72,10 @@ public class RobotContainer {
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
   private final LowerArm lowerArm = new LowerArm(arm);
   private final RaiseArm raiseArm = new RaiseArm(arm);
-  private final RunIntake runIntakeForwards = new RunIntake(intake, Direction.FORWARD);
-  private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARD);
-  private final RunFeeder runFeederForwards = new RunFeeder(feeder, true);
-  private final RunFeeder runFeederBackwards = new RunFeeder(feeder, false);
+  private final RunIntake runIntakeForwards = new RunIntake(intake, Direction.FORWARDS);
+  private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARDS);
+  private final RunFeeder runFeederForwards = new RunFeeder(feeder, Direction.FORWARDS);
+  private final RunFeeder runFeederBackwards = new RunFeeder(feeder, Direction.BACKWARDS);
   private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
   private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final RunNeck runNeck = new RunNeck(shooter);

@@ -1,13 +1,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.Direction;
 import frc.robot.subsystems.Feeder;
 
 public class RunFeeder extends CommandBase{
     private Feeder feeder;
-    private boolean direction;
+    private Direction direction;
 
-    public RunFeeder(Feeder feeder, boolean direction) {
+    public RunFeeder(Feeder feeder, Direction direction) {
         this.feeder = feeder;
         this.direction = direction;
 
@@ -16,7 +17,7 @@ public class RunFeeder extends CommandBase{
 
     @Override
     public void execute() {
-        feeder.set(true);
+        feeder.runFeeder(Direction.FORWARDS);
     }
 
     @Override

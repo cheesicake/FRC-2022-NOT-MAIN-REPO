@@ -2,7 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Intake.Direction;
+import frc.robot.Constants.Direction;;
 
 public class RunIntake extends CommandBase{
     private Intake intake;
@@ -16,7 +16,7 @@ public class RunIntake extends CommandBase{
     @Override
     public void execute() {
 
-        intake.runIntake(Direction.FORWARD);
+        intake.runIntake(Direction.FORWARDS);
     }
 
     @Override
