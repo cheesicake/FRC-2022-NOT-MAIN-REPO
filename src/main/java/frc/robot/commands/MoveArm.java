@@ -23,5 +23,9 @@ public class MoveArm extends CommandBase{
         arm.runArm(armState);
     }
 
+    public void interrupted() {
+        arm.runArm(armState.HIGH);
+    }
+
 }
 
