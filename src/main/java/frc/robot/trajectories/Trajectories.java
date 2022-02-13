@@ -24,7 +24,7 @@ import frc.robot.subsystems.Drivetrain;
 
 public class Trajectories {
  //Max velocity & acceleration
-    public static CommandGroupBase getCommand(Drivetrain drivetrain, Trajectory trajectory){
+    public static CommandGroupBase followTrajectory(Drivetrain drivetrain, Trajectory trajectory){
         //double maxVoltage = 8;
         //DifferentialDriveVoltageConstraint constraint = new DifferentialDriveVoltageConstraint(drivetrain.getMotorFeedForward(), drivetrain.getDifferentialDriveKinematics(), maxVoltage);
         TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(1), Units.feetToMeters(1)).setKinematics(drivetrain.getDifferentialDriveKinematics());

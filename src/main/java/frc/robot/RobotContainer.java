@@ -15,8 +15,6 @@ import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
 import frc.robot.commands.Climb;
 import frc.robot.commands.Drive;
-import frc.robot.commands.LowerArm;
-import frc.robot.commands.RaiseArm;
 import frc.robot.commands.RunFeeder;
 import frc.robot.commands.RunIntake;
 import frc.robot.subsystems.Arm;
@@ -70,8 +68,8 @@ public class RobotContainer {
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
-  private final LowerArm lowerArm = new LowerArm(arm);
-  private final RaiseArm raiseArm = new RaiseArm(arm);
+  private final MoveArm lowerArm = new MoveArm(arm, ArmState.LOW);
+  private final MoveArm raiseArm = new MoveArm(arm, ArmState.HIGH);
   private final RunIntake runIntakeForwards = new RunIntake(intake, Direction.FORWARDS);
   private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARDS);
   private final RunFeeder runFeederForwards = new RunFeeder(feeder, Direction.FORWARDS);
@@ -87,7 +85,7 @@ public class RobotContainer {
 
   // Auto
   private final ZeroAuto zeroAuto = new ZeroAuto();
-  private final FirstAuto firstAuto = new FirstAuto();
+  private final FirstAuto firstAuto = new FirstAuto(drivetrain, arm, intake, feeder, shooter);
   private final SecondAuto secondAuto = new SecondAuto();
   private final ThirdAuto thirdAuto = new ThirdAuto();
 
