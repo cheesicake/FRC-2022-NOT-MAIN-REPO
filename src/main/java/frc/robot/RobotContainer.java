@@ -85,7 +85,7 @@ public class RobotContainer {
 
   // Auto
   private final ZeroAuto zeroAuto = new ZeroAuto();
-  private final FirstAuto firstAuto = new FirstAuto(drivetrain, arm, intake, feeder, shooter);
+  private final FirstAuto firstAuto = new FirstAuto();
   private final SecondAuto secondAuto = new SecondAuto();
   private final ThirdAuto thirdAuto = new ThirdAuto();
 
