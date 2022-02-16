@@ -8,6 +8,10 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+public static enum ClimberState {
+    RAISE,
+    LOWER
+}
 public class Climber extends SubsystemBase{
     private CANSparkMax climberSparkMotorOne;
     private CANSparkMax climberSparkMotorTwo;
@@ -16,11 +20,6 @@ public class Climber extends SubsystemBase{
     private Encoder encoder;
 
     private int lowSetPoint, highSetPoint;
-
-    public static enum ClimberState {
-        RAISE,
-        LOWER
-    }
 
     private MotorControllerGroup climberSparks;
     private ClimberState climberState;
@@ -60,6 +59,13 @@ public class Climber extends SubsystemBase{
 
     public int getEncoderRaw() {
         return encoder.getRaw();
+    }
+    public int getLowSetPoint() {
+        return this.lowSetPoint;
+    }
+
+    public int getHighSetPoint() {
+        return this.highSetPoint;
     }
 
     public void runClimber(ClimberState climberState) {
