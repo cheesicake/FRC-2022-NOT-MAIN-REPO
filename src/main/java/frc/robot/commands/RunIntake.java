@@ -10,13 +10,14 @@ public class RunIntake extends CommandBase{
 
     public RunIntake(Intake intake, Direction direction) {
         this.intake = intake;
+        this.direction = direction;
         addRequirements(intake);
     }
 
     @Override
     public void execute() {
 
-        intake.runIntake(Direction.FORWARDS);
+        intake.runIntake(direction);
     }
 
     @Override

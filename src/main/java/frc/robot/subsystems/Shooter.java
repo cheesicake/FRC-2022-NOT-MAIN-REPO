@@ -28,6 +28,11 @@ public class Shooter extends SubsystemBase {
         shooterTalonRight.set(Constants.ShooterConstants.shootSpeed);
     }
 
+    public void stop() {
+        shooterTalonLeft.stopMotor();
+        shooterTalonRight.stopMotor();
+    }
+
     public void runNeck() {
         neckSpark.set(Constants.ShooterConstants.neckSpeed);
     }

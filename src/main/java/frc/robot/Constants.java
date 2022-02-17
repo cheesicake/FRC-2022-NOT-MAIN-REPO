@@ -16,13 +16,13 @@ public class Constants {
         public final static int leftRearTalon = 4;
         public final static int shooterTalonRight = 5;
         public final static int shooterTalonLeft = 6;
-        public final static int intakeSpark = 7;
+        public final static int intakeSpark = 13;
         public final static int armSpark1 = 8;
         public final static int armSpark2 = 9;
         public final static int feederSpark = 10;
         public final static int neckSpark = 11;
         public final static int climberSpark1 = 12;
-        public final static int climberSpark2 = 13;
+        public final static int climberSpark2 = 7;
         
     }
 
@@ -32,22 +32,22 @@ public class Constants {
         public final static int secondaryJoystickPort = 2;
 
         public class SecondaryJoystick { // Temporary Buttons for Controls meant for Week 1 Teams to use
-            public final static int lowerArm = 0; // Implement PID System to preset these positions
-            public final static int raiseArm = 1;
-            public final static int runIntakeForwards = 2;
-            public final static int runIntakeBackwards = 3;
+            public final static int lowerArm = 3; // Implement PID System to preset these positions
+            public final static int raiseArm = 4;
+            public final static int runIntakeForwards = 5;
+            public final static int runIntakeBackwards = 6;
 
-            public final static int runFeederForwards = 4;
-            public final static int runFeederBackwards = 5;
-            public final static int runShooter = 6;
-            public final static int raiseClimber = 7;
-            public final static int lowerClimber = 8;
-            public final static int runNeck = 9;
+            public final static int runFeederForwards = 7;
+            public final static int runFeederBackwards = 8;
+            public final static int runShooter = 9;
+            public final static int raiseClimber = 10;
+            public final static int lowerClimber = 11;
+            public final static int runNeck = 12;
 
-            public final static int moveArmAndIntake = 10;
-            public final static int runIntakeAndFeeder = 11;
-            public final static int runFeederAndShoot = 12;
-            public final static int moveArmIntakeandShoot = 13;
+            public final static int moveArmAndIntake = 13;
+            public final static int runIntakeAndFeeder = 14;
+            public final static int runFeederAndShoot = 15;
+            public final static int moveArmIntakeandShoot = 16;
         }
     }
 
