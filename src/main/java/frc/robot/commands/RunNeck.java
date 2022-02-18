@@ -1,23 +1,28 @@
 package frc.robot.commands;
 
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Shooter;
+import frc.robot.Constants.Direction;
+import frc.robot.subsystems.Neck;
 
 public class RunNeck extends CommandBase {
-    Shooter shooter;
+    private Neck neck;
+    private Direction direction;
 
-    public RunNeck(Shooter shooter) {
-        this.shooter = shooter;
-        addRequirements(shooter);
+    public RunNeck(Neck neck, Direction direction) {
+        this.neck = neck;
+        this.direction = direction;
+        addRequirements(neck);
+
     }
 
     @Override
     public void execute() {
-        shooter.runNeck();
+        neck.runNeck(direction);
     }
 
     @Override 
     public void end(boolean i) {
-        shooter.stop();
+        neck.stop();
     }
 }

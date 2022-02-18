@@ -100,12 +100,6 @@ public class Drivetrain extends SubsystemBase {
     public MotorControllerGroup getRightMotors() {
         return rightMotors;
     }
-
-    //Return Position from Integrated Encoders from TalonFXs 
-
-    /*
-        Need to Check How Accurate This Is
-    */
     public double getLeftPosition() {
         return leftFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
     }
@@ -137,11 +131,11 @@ public class Drivetrain extends SubsystemBase {
         return pose;
     }
 
-    public SimpleMotorFeedforward getMotorFeedForward(){
+    public SimpleMotorFeedforward getMotorFeedForward() {
         return feedforward;
     }
     
-    public DifferentialDriveWheelSpeeds getVelocities(){
+    public DifferentialDriveWheelSpeeds getVelocities() {
         //I suspect we might have to do RPM motor to RPM wheel before converting to m/time
         //So we might need gear ratios? => sensorVelocity / GEAR_RATIO *2PI * m/min / 60s
         return new DifferentialDriveWheelSpeeds(
@@ -149,7 +143,11 @@ public class Drivetrain extends SubsystemBase {
             rightFrontTalon.getSelectedSensorVelocity()
         );
     }
-    public PIDController getLeftPIDController(){return leftPID;}
-    public PIDController getRightPIDController(){return rightPID;}
+    public PIDController getLeftPIDController() {
+        return leftPID;
+    }
+    public PIDController getRightPIDController() {
+        return rightPID;
+    }
 }
 

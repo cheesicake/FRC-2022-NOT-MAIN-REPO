@@ -31,18 +31,19 @@ public class Constants {
         public final static int rightJoystickPort = 1;
         public final static int secondaryJoystickPort = 2;
 
-        public class SecondaryJoystick { // Temporary Buttons for Controls meant for Week 1 Teams to use
-            public final static int lowerArm = 3; // Implement PID System to preset these positions
-            public final static int raiseArm = 4;
-            public final static int runIntakeForwards = 5;
-            public final static int runIntakeBackwards = 6;
+        public class SecondaryJoystick { 
+            public final static int lowerArm = 2; 
+            public final static int raiseArm = 3;
+            public final static int runIntakeForwards = 4;
+            public final static int runIntakeBackwards = 5;
 
-            public final static int runFeederForwards = 7;
-            public final static int runFeederBackwards = 8;
-            public final static int runShooter = 9;
-            public final static int raiseClimber = 10;
-            public final static int lowerClimber = 11;
-            public final static int runNeck = 12;
+            public final static int runFeederForwards = 6;
+            public final static int runFeederBackwards = 7;
+            public final static int runShooter = 8;
+            public final static int raiseClimber = 9;
+            public final static int lowerClimber = 10;
+            public final static int runNeck = 11;
+            public final static int runNeckBackwards = 12;
 
             public final static int moveArmAndIntake = 13;
             public final static int runIntakeAndFeeder = 14;
@@ -117,11 +118,13 @@ public class Constants {
         public final static double backwardsFeederSpeed = -1;
     }
 
-
-    public static class ShooterConstants {
+    public static class NeckConstants {
         public final static double neckSpeed = 0.5;
-        public final static double shootSpeed = 1.0;
+        public final static double backwardsNeckSpeed = -0.5;
     }
 
+    public static class ShooterConstants {
+        public final static double shootSpeed = 1.0;
+    }
 
 }

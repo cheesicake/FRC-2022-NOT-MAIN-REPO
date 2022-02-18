@@ -29,7 +29,7 @@ public class Intake extends SubsystemBase {
     }
 
 
-    public void stopIntake() {
+    public void stop() {
         intakeSpark.set(0);
     }
 
