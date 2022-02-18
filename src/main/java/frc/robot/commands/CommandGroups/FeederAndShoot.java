@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Shooter;
 import frc.robot.commands.RunFeeder;
+import frc.robot.commands.RunNeck;
 import frc.robot.commands.Shoot;
 import frc.robot.Constants.Direction;
 

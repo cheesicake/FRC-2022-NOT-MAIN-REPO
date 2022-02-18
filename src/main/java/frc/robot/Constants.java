@@ -17,12 +17,12 @@ public class Constants {
         public final static int shooterTalonRight = 5;
         public final static int shooterTalonLeft = 6;
         public final static int intakeSpark = 13;
-        public final static int armSpark1 = 8;
-        public final static int armSpark2 = 9;
-        public final static int feederSpark = 10;
-        public final static int neckSpark = 11;
-        public final static int climberSpark1 = 12;
-        public final static int climberSpark2 = 7;
+        public final static int armSpark1 = 10;
+        public final static int armSpark2 = 12;
+        public final static int feederSpark = 9;
+        public final static int neckSpark = 7;
+        public final static int climberSpark1 = 8;
+        public final static int climberSpark2 = 11;
         
     }
 
@@ -113,8 +113,8 @@ public class Constants {
     }
 
     public static class FeederConstants {
-        public final static double feederSpeed = 0.3;
-        public final static double backwardsFeederSpeed = -0.3;
+        public final static double feederSpeed = 1;
+        public final static double backwardsFeederSpeed = -1;
     }
 
 

@@ -41,7 +41,7 @@ public class RobotContainer {
   private final Intake intake = new Intake();
   private final Arm arm = new Arm();
   private final Feeder feeder = new Feeder();
-  private final Climber climber = new Climber();
+  //private final Climber climber = new Climber();
   private final Shooter shooter = new Shooter();
 
   //Joysticks
@@ -74,8 +74,8 @@ public class RobotContainer {
   private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARDS);
   private final RunFeeder runFeederForwards = new RunFeeder(feeder, Direction.FORWARDS);
   private final RunFeeder runFeederBackwards = new RunFeeder(feeder, Direction.BACKWARDS);
-  private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
-  private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
+ // private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
+  //private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final RunNeck runNeck = new RunNeck(shooter);
   private final Shoot shoot = new Shoot(shooter);
   private final ArmAndIntake armAndIntake = new ArmAndIntake(arm, intake);
@@ -105,11 +105,11 @@ public class RobotContainer {
 
   private void zeroSubsystems() {
     arm.zeroArm();
-    climber.zeroClimber();
+    //climber.zeroClimber();
   }
 
   private void configureButtonBindings() {
-    drivetrain.setDefaultCommand(drive);
+    //drivetrain.setDefaultCommand(drive);
     runIntakeButton.whenHeld(runIntakeForwards);
     shootButton.whenHeld(shoot);
     runNeckButton.whenHeld(runNeck);
@@ -118,8 +118,8 @@ public class RobotContainer {
     lowerArmButton.whenHeld(lowerArm);
     runFeederForwardsButton.whenHeld(runFeederForwards);
     runFeederBackwardsButton.whenHeld(runFeederBackwards);
-    raiseClimberButton.whenHeld(raiseClimber);
-    lowerClimberButton.whenHeld(lowerClimber);
+    //raiseClimberButton.whenHeld(raiseClimber);
+    //lowerClimberButton.whenHeld(lowerClimber);
     lowerArmAndIntakeButton.whenHeld(armAndIntake);
     runIntakeAndFeederButton.whenHeld(intakeAndFeeder);
     runFeederAndShootButton.whenHeld(feederAndShoot);

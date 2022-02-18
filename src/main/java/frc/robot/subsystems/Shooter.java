@@ -20,7 +20,6 @@ public class Shooter extends SubsystemBase {
 
         neckSpark = new CANSparkMax(Constants.CanIds.neckSpark,MotorType.kBrushless);
 
-        shooterTalonLeft.setInverted(true);
     }
 
     public void shoot() {
@@ -31,6 +30,7 @@ public class Shooter extends SubsystemBase {
     public void stop() {
         shooterTalonLeft.stopMotor();
         shooterTalonRight.stopMotor();
+        neckSpark.set(0);
     }
 
     public void runNeck() {
