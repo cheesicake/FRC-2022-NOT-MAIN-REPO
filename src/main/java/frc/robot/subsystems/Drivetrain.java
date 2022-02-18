@@ -24,14 +24,14 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class Drivetrain extends SubsystemBase {
     private WPI_TalonFX rightFrontTalon;
     private WPI_TalonFX rightRearTalon;
-    //public WPI_TalonFX leftFrontTalon;
-    public WPI_TalonFX leftRearTalon;
+    private WPI_TalonFX leftFrontTalon;
+    private WPI_TalonFX leftRearTalon;
     private MotorControllerGroup leftMotors;
     private MotorControllerGroup rightMotors;
 
     private PigeonIMU pigeon;
 
-    private final DifferentialDrive drive;
+    //private final DifferentialDrive drive;
     //private final DifferentialDriveOdometry odometry;
     private DifferentialDriveKinematics kinematics;
     private DifferentialDriveOdometry odometry;
@@ -43,16 +43,16 @@ public class Drivetrain extends SubsystemBase {
     public Drivetrain() {
         rightFrontTalon = new WPI_TalonFX(Constants.CanIds.rightFrontTalon);
         rightRearTalon = new WPI_TalonFX(Constants.CanIds.rightRearTalon);
-        // leftFrontTalon = new WPI_TalonFX(Constants.CanIds.leftFrontTalon);
+        leftFrontTalon = new WPI_TalonFX(Constants.CanIds.leftFrontTalon);
         leftRearTalon = new WPI_TalonFX(Constants.CanIds.leftRearTalon);
 
-        leftMotors = new MotorControllerGroup(leftRearTalon);
+        leftMotors = new MotorControllerGroup(leftRearTalon, leftFrontTalon);
         rightMotors = new MotorControllerGroup(rightFrontTalon, rightRearTalon);
         
 
         //TODO: Need to See Which Ones Are Inverted
 
-        drive = new DifferentialDrive(leftMotors, rightMotors);
+        //drive = new DifferentialDrive(leftMotors, rightMotors);
 
         pigeon = new PigeonIMU(Constants.CanIds.pigeonId);
 
@@ -81,7 +81,7 @@ public class Drivetrain extends SubsystemBase {
 
     @Override
     public void periodic() {
-        // pose = odometry.update(getHeading(), getLeftPosition(), getRightPosition());
+        pose = odometry.update(getHeading(), getLeftPosition(), getRightPosition());
     }
     
 
@@ -106,9 +106,9 @@ public class Drivetrain extends SubsystemBase {
     /*
         Need to Check How Accurate This Is
     */
-    // public double getLeftPosition() {
-    //     return leftFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
-    // }
+    public double getLeftPosition() {
+        return leftFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
+    }
 
     public double getRightPosition() {
         return rightFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
@@ -118,9 +118,9 @@ public class Drivetrain extends SubsystemBase {
         return rightFrontTalon.getSelectedSensorVelocity();
     }
 
-    // public double getLeftVelocity() {
-    //     return leftFrontTalon.getSelectedSensorVelocity();
-    // }
+    public double getLeftVelocity() {
+        return leftFrontTalon.getSelectedSensorVelocity();
+    }
 
     
     //Use Pigeon to get angle
@@ -145,7 +145,7 @@ public class Drivetrain extends SubsystemBase {
         //I suspect we might have to do RPM motor to RPM wheel before converting to m/time
         //So we might need gear ratios? => sensorVelocity / GEAR_RATIO *2PI * m/min / 60s
         return new DifferentialDriveWheelSpeeds(
-            leftRearTalon.getSelectedSensorVelocity(),
+            leftFrontTalon.getSelectedSensorVelocity(),
             rightFrontTalon.getSelectedSensorVelocity()
         );
     }

@@ -74,7 +74,7 @@ public class RobotContainer {
   private final RunIntake runIntakeBackwards = new RunIntake(intake, Direction.BACKWARDS);
   private final RunFeeder runFeederForwards = new RunFeeder(feeder, Direction.FORWARDS);
   private final RunFeeder runFeederBackwards = new RunFeeder(feeder, Direction.BACKWARDS);
- // private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
+  //private final Climb raiseClimber = new Climb(climber, ClimberState.RAISE);
   //private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final RunNeck runNeck = new RunNeck(shooter);
   private final Shoot shoot = new Shoot(shooter);
@@ -109,7 +109,7 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    //drivetrain.setDefaultCommand(drive);
+    drivetrain.setDefaultCommand(drive);
     runIntakeButton.whenHeld(runIntakeForwards);
     shootButton.whenHeld(shoot);
     runNeckButton.whenHeld(runNeck);
