@@ -15,4 +15,9 @@ public class Shoot extends CommandBase {
     public void execute() {
         shooter.shoot();
     }
+
+    @Override 
+    public void end(boolean i) {
+        shooter.stop();
+    }
 }
