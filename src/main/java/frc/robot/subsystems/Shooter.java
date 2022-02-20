@@ -26,6 +26,13 @@ public class Shooter extends SubsystemBase {
         shooterTalons.set(Constants.ShooterConstants.shootSpeed);
     }
 
+    public double getLeftVelocity() {
+        return shooterTalonLeft.getSelectedSensorVelocity();
+    }
+    public double getRightVelocity() {
+        return shooterTalonRight.getSelectedSensorVelocity();
+    }
+
     public void stop() {
         shooterTalons.set(0);
     }
