@@ -29,7 +29,7 @@ public class Shoot extends CommandBase {
         rightVelocity = shooter.getRightVelocity();
 
         //wait until both left and right velocities are above the target
-        while (leftVelocity < targetVelocity && rightVelocity < targetVelocity){
+        while (leftVelocity < targetVelocity || rightVelocity < targetVelocity) {
             leftVelocity = shooter.getLeftVelocity();
             rightVelocity = shooter.getRightVelocity();
         }
