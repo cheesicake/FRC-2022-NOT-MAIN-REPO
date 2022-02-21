@@ -1,7 +1,5 @@
 package frc.robot;
 
-import com.fasterxml.jackson.databind.util.PrimitiveArrayBuilder;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -80,7 +78,7 @@ public class RobotContainer {
   //private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final RunNeck runNeck = new RunNeck(neck, Direction.FORWARDS);
   private final RunNeck runNeckBackwards = new RunNeck(neck, Direction.BACKWARDS);
-  private final Shoot shoot = new Shoot(shooter);
+  private final Shoot shoot = new Shoot(neck, shooter, 10d);
   private final ArmAndIntake armAndIntake = new ArmAndIntake(arm, intake);
   private final IntakeAndFeeder intakeAndFeeder = new IntakeAndFeeder(intake, feeder);
   private final FeederAndShoot feederAndShoot = new FeederAndShoot(feeder, neck, shooter);
