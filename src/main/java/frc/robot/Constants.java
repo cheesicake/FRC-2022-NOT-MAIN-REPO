@@ -109,11 +109,12 @@ public class Constants {
         public final static boolean encoderReverse = false;
         public final static EncodingType encodingType = EncodingType.k1X;
 
-        public final static int kP = 0;
-        public final static int kI = 0;
-        public final static int kD = 0;
+        public final static double kP = 0.0002; //Don't touch these constants unless yaknow whatcha doing
+        public final static double kI = 0;
+        public final static double kD = 0.00000001;
+        public final static double tolerance = 150;
         
-        public final static int pidLowSetPoint = 0;
+        public final static int pidLowSetPoint = 2100;
         public final static int pidHighSetPoint = 0;
     }
 

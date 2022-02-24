@@ -25,7 +25,7 @@ public class MoveArm extends CommandBase{
 
     @Override
     public void end(boolean i) {
-        arm.runArm(armState.HIGH);
+        //arm.runArm(armState.HIGH);
     }
 
 }

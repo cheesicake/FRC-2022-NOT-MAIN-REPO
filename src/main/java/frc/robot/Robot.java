@@ -91,7 +91,9 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    
+    //System.out.println("Encoder: " + m_robotContainer.arm.getEncoderRaw());
+    //System.out.println("Speed" + m_robotContainer.arm.getArmSpark().get());
+    //System.out.println(m_robotContainer.arm.atSetpoint(2015d, 50d));
   }
 
   @Override

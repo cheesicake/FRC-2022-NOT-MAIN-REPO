@@ -37,7 +37,7 @@ public class RobotContainer {
   //Subsystems
   private final Drivetrain drivetrain = new Drivetrain();
   private final Intake intake = new Intake();
-  private final Arm arm = new Arm();
+  public final Arm arm = new Arm();
   private final Feeder feeder = new Feeder();
   private final Climber climber = new Climber();
   private final Neck neck = new Neck();
