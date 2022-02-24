@@ -55,6 +55,11 @@ public class Arm extends SubsystemBase{
     }
 
     public void setArmSpeed(double speed) {
+        if (speed >= 0.4) {
+            speed = 0.4;
+        } else if (speed <= -0.4) {
+            speed = -0.4;
+        }
         armSparks.set(speed);
     }
 
