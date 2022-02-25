@@ -25,7 +25,7 @@ public class Arm extends SubsystemBase{
     
     private ArmState armState;
 
-    private int lowSetPoint, highSetPoint;
+    private double lowSetPoint, highSetPoint;
 
     public Arm() {
         armSpark1 = new CANSparkMax(Constants.CanIds.armSpark1, MotorType.kBrushless);
@@ -39,6 +39,10 @@ public class Arm extends SubsystemBase{
         encoder1 = new Encoder(
             2,
             3
+        );
+        encoder2 = new Encoder(
+            0,
+            1
         );
         lowSetPoint = Constants.IntakeAndArmConstants.pidLowSetPoint;
         highSetPoint = Constants.IntakeAndArmConstants.pidHighSetPoint;
@@ -55,16 +59,17 @@ public class Arm extends SubsystemBase{
     }
 
     public void setArmSpeed(double speed) {
-        if (speed >= 0.4) {
-            speed = 0.4;
-        } else if (speed <= -0.4) {
-            speed = -0.4;
+        if (speed >= 0.6) {
+            speed = 0.6;
+        } else if (speed <= -0.6) {
+            speed = -0.6;
         }
         armSparks.set(speed);
     }
 
     public double getEncoderRaw() {
-        return encoder1.getRaw();
+        System.out.println("Encoder Average: " + (encoder1.getRaw()+encoder2.getRaw())/2);
+        return ((encoder1.getRaw()+encoder2.getRaw())/2);
     }
 
     public double calculatePID(double encoderRaw, double setPoint) {
@@ -97,6 +102,8 @@ public class Arm extends SubsystemBase{
 
     public void zeroArm() {
         resetPID();
+        encoder1.reset();
+        encoder2.reset();
         armState = ArmState.HIGH;
         runArm(armState);
     }

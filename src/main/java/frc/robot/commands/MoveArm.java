@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Arm.ArmState;
 
@@ -25,7 +26,9 @@ public class MoveArm extends CommandBase{
 
     @Override
     public void end(boolean i) {
-        //arm.runArm(armState.HIGH);
+        if(!arm.atSetpoint(Constants.IntakeAndArmConstants.pidHighSetPoint, Constants.IntakeAndArmConstants.tolerance)) {
+            arm.runArm(armState.HIGH);
+        }
     }
 
 }
