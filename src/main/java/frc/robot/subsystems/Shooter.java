@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -12,29 +13,31 @@ import frc.robot.Constants;
 public class Shooter extends SubsystemBase {
     private WPI_TalonFX shooterTalonLeft;
     private WPI_TalonFX shooterTalonRight;
-    private MotorControllerGroup shooterTalons;
 
     public Shooter() {
         shooterTalonLeft = new WPI_TalonFX(Constants.CanIds.shooterTalonLeft);
         shooterTalonRight = new WPI_TalonFX(Constants.CanIds.shooterTalonRight);
 
-        shooterTalons = new MotorControllerGroup(shooterTalonLeft, shooterTalonRight);
+        shooterTalonLeft.follow(shooterTalonRight);
+
+        shooterTalonRight.config_kP(Constants.ShooterConstants.kPIDLoopIdx, Constants.ShooterConstants.kP);
+        shooterTalonRight.config_kI(Constants.ShooterConstants.kPIDLoopIdx, Constants.ShooterConstants.kI);
+        shooterTalonRight.config_kD(Constants.ShooterConstants.kPIDLoopIdx, Constants.ShooterConstants.kD);
+        shooterTalonRight.config_kF(Constants.ShooterConstants.kPIDLoopIdx, Constants.ShooterConstants.kF);
 
     }
 
-    public void shoot() {
-        shooterTalons.set(Constants.ShooterConstants.shootSpeed);
-    }
-
-    public double getLeftVelocity() {
-        return shooterTalonLeft.getSelectedSensorVelocity();
-    }
-    public double getRightVelocity() {
-        return shooterTalonRight.getSelectedSensorVelocity();
+    public void shoot(double targetVelocity) {
+        //Target Velocity In Revolution Per Seconds
+        shooterTalonRight.set(ControlMode.Velocity, targetVelocity); 
     }
 
     public void stop() {
-        shooterTalons.set(0);
+        shooterTalonRight.set(0);
+    }
+
+    public double getVelocity() {
+        return shooterTalonRight.getSelectedSensorVelocity();
     }
 
 }

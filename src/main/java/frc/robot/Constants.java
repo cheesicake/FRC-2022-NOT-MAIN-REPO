@@ -128,7 +128,11 @@ public class Constants {
     }
 
     public static class ShooterConstants {
-        public final static double shootSpeed = 1.0;
+        public final static int kPIDLoopIdx = 0;
+        public final static double kP = 0;
+        public final static double kI = 0;
+        public final static double kD = 0;
+        public final static double kF = 0;
     }
 
 }

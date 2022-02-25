@@ -102,19 +102,19 @@ public class Drivetrain extends SubsystemBase {
         return rightMotors;
     }
     public double getLeftPosition() {
-        return leftFrontTalon.getSelectedSensorPosition() / (Constants.DriveTrainConstants.wheelCircumference * Constants.DriveTrainConstants.encoderEdgesPerRev * Constants.DriveTrainConstants.gearRatio);
+        return leftFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.wheelCircumference / (Constants.DriveTrainConstants.gearRatio * Constants.DriveTrainConstants.encoderEdgesPerRev);
     }
 
     public double getRightPosition() {
-        return rightFrontTalon.getSelectedSensorPosition() * (Constants.DriveTrainConstants.wheelCircumference * Constants.DriveTrainConstants.encoderEdgesPerRev * Constants.DriveTrainConstants.gearRatio);
+        return rightFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.wheelCircumference / (Constants.DriveTrainConstants.gearRatio * Constants.DriveTrainConstants.encoderEdgesPerRev);
     }
 
     public double getRightVelocity() {
-        return rightFrontTalon.getSelectedSensorVelocity();
+        return rightFrontTalon.getSelectedSensorVelocity() *   Constants.DriveTrainConstants.wheelCircumference / (Constants.DriveTrainConstants.gearRatio * Constants.DriveTrainConstants.encoderEdgesPerRev);
     }
 
     public double getLeftVelocity() {
-        return leftFrontTalon.getSelectedSensorVelocity();
+        return leftFrontTalon.getSelectedSensorVelocity() * Constants.DriveTrainConstants.wheelCircumference / (Constants.DriveTrainConstants.gearRatio * Constants.DriveTrainConstants.encoderEdgesPerRev);
     }
 
     

@@ -35,9 +35,9 @@ import frc.robot.Constants.Direction;
 public class RobotContainer {
 
   //Subsystems
-  private final Drivetrain drivetrain = new Drivetrain();
+  public final Drivetrain drivetrain = new Drivetrain();
   private final Intake intake = new Intake();
-  private final Arm arm = new Arm();
+  public final Arm arm = new Arm();
   private final Feeder feeder = new Feeder();
   private final Climber climber = new Climber();
   private final Neck neck = new Neck();
@@ -78,7 +78,7 @@ public class RobotContainer {
   private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final RunNeck runNeck = new RunNeck(neck, Direction.FORWARDS);
   private final RunNeck runNeckBackwards = new RunNeck(neck, Direction.BACKWARDS);
-  private final Shoot shoot = new Shoot(neck, shooter, 10d);
+  private final Shoot shoot = new Shoot(shooter, 10d);
   private final ArmAndIntake armAndIntake = new ArmAndIntake(arm, intake);
   private final IntakeAndFeeder intakeAndFeeder = new IntakeAndFeeder(intake, feeder);
   private final FeederAndShoot feederAndShoot = new FeederAndShoot(feeder, neck, shooter);
@@ -103,6 +103,10 @@ public class RobotContainer {
   public void periodic() {
 
   }  
+
+  public Arm getArm() {
+    return arm;
+  }
 
   private void zeroSubsystems() {
     arm.zeroArm();

@@ -6,6 +6,7 @@ import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.math.controller.PIDController;
 
@@ -13,9 +14,11 @@ public class Arm extends SubsystemBase{
     private CANSparkMax armSpark1;
     private CANSparkMax armSpark2;
     private MotorControllerGroup armSparks;
-    private RelativeEncoder encoder;
+    //private RelativeEncoder encoder;
     private PIDController pid;
-    
+    private Encoder encoderLeft;
+    private Encoder encoderRight;
+
     public static enum ArmState {
         LOW,
         HIGH
@@ -28,13 +31,15 @@ public class Arm extends SubsystemBase{
     public Arm() {
         armSpark1 = new CANSparkMax(Constants.CanIds.armSpark1, MotorType.kBrushless);
         armSpark2 = new CANSparkMax(Constants.CanIds.armSpark2, MotorType.kBrushless);
+        encoderLeft = new Encoder(Constants.IntakeAndArmConstants.encoderChannelA, Constants.IntakeAndArmConstants.encoderChannelB);
+        encoderRight = new Encoder(2, 3);
 
         //TODO: CHECK WHICH ONES ARE INVERTED
         armSpark1.setInverted(true);
         armSpark2.setInverted(false);
 
         armSparks = new MotorControllerGroup(armSpark1, armSpark2);
-        encoder = armSpark1.getEncoder();
+        //encoder = armSpark1.getEncoder();
         lowSetPoint = Constants.IntakeAndArmConstants.pidLowSetPoint;
         highSetPoint = Constants.IntakeAndArmConstants.pidHighSetPoint;
 
@@ -52,7 +57,8 @@ public class Arm extends SubsystemBase{
     }
 
     public double getEncoderRaw() {
-        return encoder.getPosition();
+        //return encoderLeft.get();
+        return encoderRight.get();
     }
 
     public double calculatePID(double encoderRaw, int setPoint) {
