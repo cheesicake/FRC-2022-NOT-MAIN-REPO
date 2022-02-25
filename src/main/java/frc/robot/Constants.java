@@ -45,9 +45,7 @@ public class Constants {
             public final static int runNeck = 11;
             public final static int runNeckBackwards = 12;
 
-            public final static int moveArmAndIntake = 13;
-            public final static int runIntakeAndFeeder = 14;
-            public final static int runFeederAndShoot = 15;
+            public final static int runNeckAndShoot = 15;
             public final static int moveArmIntakeandShoot = 16;
         }
     }
@@ -133,6 +131,8 @@ public class Constants {
         public final static double kI = 0;
         public final static double kD = 0;
         public final static double kF = 0;
+
+        public final static double targetVelocity = 10;
     }
 
 }

@@ -23,10 +23,8 @@ import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
 import frc.robot.commands.RunNeck;
 import frc.robot.commands.Shoot;
-import frc.robot.commands.CommandGroups.ArmAndIntake;
 import frc.robot.commands.CommandGroups.ArmIntakeAndFeeder;
-import frc.robot.commands.CommandGroups.FeederAndShoot;
-import frc.robot.commands.CommandGroups.IntakeAndFeeder;
+import frc.robot.commands.CommandGroups.NeckAndShoot;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Arm.ArmState;
 import frc.robot.Constants.Direction;
@@ -61,9 +59,7 @@ public class RobotContainer {
   private final JoystickButton shootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runShooter);
   private final JoystickButton raiseClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseClimber);
   private final JoystickButton lowerClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerClimber);
-  private final JoystickButton lowerArmAndIntakeButton = new JoystickButton(secondaryJoystick,Constants.JoystickConstants.SecondaryJoystick.moveArmAndIntake);
-  private final JoystickButton runIntakeAndFeederButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runIntakeAndFeeder);
-  private final JoystickButton runFeederAndShootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runFeederAndShoot);
+  private final JoystickButton runNeckAndShootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runNeckAndShoot);
   private final JoystickButton lowerArmIntakeAndFeederButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.moveArmIntakeandShoot);
 
   // Commands
@@ -78,10 +74,8 @@ public class RobotContainer {
   private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final RunNeck runNeck = new RunNeck(neck, Direction.FORWARDS);
   private final RunNeck runNeckBackwards = new RunNeck(neck, Direction.BACKWARDS);
-  private final Shoot shoot = new Shoot(shooter, 10d);
-  private final ArmAndIntake armAndIntake = new ArmAndIntake(arm, intake);
-  private final IntakeAndFeeder intakeAndFeeder = new IntakeAndFeeder(intake, feeder);
-  private final FeederAndShoot feederAndShoot = new FeederAndShoot(feeder, neck, shooter);
+  private final Shoot shoot = new Shoot(shooter, Constants.ShooterConstants.targetVelocity);
+  private final NeckAndShoot neckAndShoot = new NeckAndShoot(neck, shooter);
   private final ArmIntakeAndFeeder armIntakeAndFeeder = new ArmIntakeAndFeeder(arm, intake, feeder);
 
   // Auto
@@ -126,9 +120,7 @@ public class RobotContainer {
     runFeederBackwardsButton.whenHeld(runFeederBackwards);
     raiseClimberButton.whenHeld(raiseClimber);
     lowerClimberButton.whenHeld(lowerClimber);
-    lowerArmAndIntakeButton.whenHeld(armAndIntake);
-    runIntakeAndFeederButton.whenHeld(intakeAndFeeder);
-    runFeederAndShootButton.whenHeld(feederAndShoot);
+    runNeckAndShootButton.whenHeld(neckAndShoot);
     lowerArmIntakeAndFeederButton.whenHeld(armIntakeAndFeeder);
   }
 
