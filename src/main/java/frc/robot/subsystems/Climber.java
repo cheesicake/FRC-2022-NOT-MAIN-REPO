@@ -1,9 +1,9 @@
 package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -17,7 +17,7 @@ public class Climber extends SubsystemBase{
     private CANSparkMax climberSparkMotorTwo;
 
     private PIDController pid;
-    private Encoder encoder;
+    private RelativeEncoder encoder;
 
     private int lowSetPoint, highSetPoint;
 
@@ -30,12 +30,7 @@ public class Climber extends SubsystemBase{
 
         climberSparks = new MotorControllerGroup(climberSparkMotorOne, climberSparkMotorTwo);
 
-        encoder = new Encoder(
-            Constants.ClimberConstants.encoderChannelA,
-            Constants.ClimberConstants.encoderChannelB,
-            Constants.ClimberConstants.encoderReverse,
-            Constants.ClimberConstants.encodingType
-        );
+        encoder = climberSparkMotorOne.getEncoder();
 
         pid = new PIDController(
             Constants.ClimberConstants.kP,
@@ -57,8 +52,8 @@ public class Climber extends SubsystemBase{
         return pid.calculate(encoderRaw, setPoint);
     }
 
-    public int getEncoderRaw() {
-        return encoder.getRaw();
+    public double getEncoderRaw() {
+        return encoder.getPosition();
     }
     public int getLowSetPoint() {
         return this.lowSetPoint;
@@ -98,7 +93,6 @@ public class Climber extends SubsystemBase{
         climberSparks.close();
         climberSparkMotorOne.close();
         climberSparkMotorTwo.close();
-        encoder.close();
         pid.close();
     }
 
