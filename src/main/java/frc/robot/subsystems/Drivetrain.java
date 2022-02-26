@@ -65,7 +65,7 @@ public class Drivetrain extends SubsystemBase {
         //Kinematics parameter is the distance between the wheels aka track width.
         kinematics = new DifferentialDriveKinematics(Units.inchesToMeters(23d));
         feedforward = new SimpleMotorFeedforward(DriveTrainConstants.kS, DriveTrainConstants.kV, DriveTrainConstants.kA);
-        odometry = new DifferentialDriveOdometry(getHeading());
+        odometry = new DifferentialDriveOdometry(getRotation());
         leftPID = new PIDController(DriveTrainConstants.kP, DriveTrainConstants.kI, DriveTrainConstants.kD);
         rightPID = new PIDController(DriveTrainConstants.kP, DriveTrainConstants.kI, DriveTrainConstants.kD);
     }
@@ -82,16 +82,15 @@ public class Drivetrain extends SubsystemBase {
 
     @Override
     public void periodic() {
-        pose = odometry.update(getHeading(), getLeftPosition(), getRightPosition());
+        pose = odometry.update(getRotation(), getLeftPosition(), getRightPosition());
     }
     
 
     public void zeroSensors() {
-        zeroEncoders();
-    }
-
-    public void zeroEncoders() {
-
+        leftFrontTalon.setSelectedSensorPosition(0);
+        rightFrontTalon.setSelectedSensorPosition(0);
+        odometry.resetPosition(pose, pigeon.getRotation2d());
+        pigeon.reset();
     }
 
     public MotorControllerGroup getLeftMotors() {
@@ -119,7 +118,7 @@ public class Drivetrain extends SubsystemBase {
 
     
     //Use Pigeon to get angle
-    public Rotation2d getHeading(){
+    public Rotation2d getRotation(){
         //Need to double check the reading from this later.
         return Rotation2d.fromDegrees(pigeon.getAngle());
     }

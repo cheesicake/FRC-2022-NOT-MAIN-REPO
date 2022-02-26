@@ -93,6 +93,7 @@ public class RobotContainer {
   private void zeroSubsystems() {
     arm.zeroArm();
     climber.zeroClimber();
+    drivetrain.zeroSensors();
   }
 
   private void configureButtonBindings() {

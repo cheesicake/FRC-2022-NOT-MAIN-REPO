@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 
@@ -63,11 +64,20 @@ public class Constants {
         public final static double kD = 0;
 
         public final static double trackWidth = Units.inchesToMeters(25);
+        public static final DifferentialDriveKinematics kDriveKinematics =new DifferentialDriveKinematics(trackWidth);
+
         
         //TODO: Need to get actual values later from the characterization tool.
         public static final double kS = 1;
         public static final double kV = 1;
         public static final double kA = 1;
+
+        public static final double kMaxSpeedMetersPerSecond = 3;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+
+        //Officially Tested 
+        public static final double kRamseteB = 2;
+        public static final double kRamseteZeta = 0.7;
     }
     
     public static class ClimberConstants {
