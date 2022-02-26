@@ -64,12 +64,13 @@ public class Arm extends SubsystemBase{
         } else if (speed <= -0.6) {
             speed = -0.6;
         }
+        //System.out.println(speed);
         armSparks.set(speed);
     }
 
     public double getEncoderRaw() {
-        System.out.println("Encoder Average: " + (encoder1.getRaw()+encoder2.getRaw())/2);
-        return ((encoder1.getRaw()+encoder2.getRaw())/2);
+        //System.out.println("Encoder Average: " + (encoder1.getRaw()+encoder2.getRaw())/2);
+        return encoder2.getRaw();
     }
 
     public double calculatePID(double encoderRaw, double setPoint) {
@@ -109,7 +110,7 @@ public class Arm extends SubsystemBase{
     }
 
     public boolean atSetpoint(Double setpoint, Double tolerance) {
-        return getEncoderRaw() < setpoint + tolerance && getEncoderRaw() > setpoint - tolerance;
+        return getEncoderRaw() <= setpoint + tolerance && getEncoderRaw() >= setpoint - tolerance;
     }
 
     public void close() {

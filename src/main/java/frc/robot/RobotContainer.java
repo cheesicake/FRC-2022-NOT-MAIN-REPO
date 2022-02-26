@@ -11,18 +11,12 @@ import frc.robot.auto.FirstAuto;
 import frc.robot.auto.SecondAuto;
 import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
-import frc.robot.commands.Climb;
-import frc.robot.commands.Drive;
-import frc.robot.commands.RunFeeder;
-import frc.robot.commands.RunIntake;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Climber.ClimberState;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
-import frc.robot.commands.RunNeck;
-import frc.robot.commands.Shoot;
 import frc.robot.commands.CommandGroups.ArmAndIntake;
 import frc.robot.commands.CommandGroups.ArmIntakeAndFeeder;
 import frc.robot.commands.CommandGroups.FeederAndShoot;
@@ -126,6 +120,7 @@ public class RobotContainer {
     runIntakeAndFeederButton.whenHeld(intakeAndFeeder);
     runFeederAndShootButton.whenHeld(feederAndShoot);
     lowerArmIntakeAndFeederButton.whenHeld(armIntakeAndFeeder);
+    lowerArmIntakeAndFeederButton.whenReleased(new MoveArm(arm, ArmState.HIGH));
   }
 
   private void configureAutos() {
