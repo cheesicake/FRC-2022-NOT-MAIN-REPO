@@ -70,7 +70,7 @@ public class RobotContainer {
   private final RunNeck runNeck = new RunNeck(neck, Direction.FORWARDS);
   private final RunNeck runNeckBackwards = new RunNeck(neck, Direction.BACKWARDS);
   private final Shoot shoot = new Shoot(shooter, Constants.ShooterConstants.targetVelocity);
-  private final NeckAndShoot neckAndShoot = new NeckAndShoot(neck, shooter);
+  private final NeckAndShoot neckAndShoot = new NeckAndShoot(feeder,neck, shooter);
   private final ArmIntakeAndFeeder armIntakeAndFeeder = new ArmIntakeAndFeeder(arm, intake, feeder);
   
 
@@ -112,8 +112,8 @@ public class RobotContainer {
     lowerClimberButton.whenHeld(lowerClimber);
     runNeckAndShootButton.whenHeld(neckAndShoot);
     lowerArmIntakeAndFeederButton.whenHeld(armIntakeAndFeeder);
-    lowerArmIntakeAndFeederButton.whenReleased(raiseArm);
-    lowerArmButton.whenReleased(raiseArm);
+    lowerArmIntakeAndFeederButton.whenReleased(new MoveArm(arm, ArmState.HIGH));
+    lowerArmButton.whenReleased(new MoveArm(arm, ArmState.HIGH));
   }
 
   private void configureAutos() {

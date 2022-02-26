@@ -110,8 +110,8 @@ public class Constants {
     }
 
     public static class IntakeAndArmConstants {
-        public final static double intakeSpeed = 0.3;
-        public final static double backwardsIntakeSpeed = -0.3;
+        public final static double intakeSpeed = 0.6;
+        public final static double backwardsIntakeSpeed = -0.6;
         
         public final static double raiseArmSpeed = 0.1;
         public final static double lowerArmSpeed = -0.1;
@@ -136,18 +136,18 @@ public class Constants {
     }
 
     public static class NeckConstants {
-        public final static double neckSpeed = 0.5;
-        public final static double backwardsNeckSpeed = -0.5;
+        public final static double neckSpeed = 1;
+        public final static double backwardsNeckSpeed = -1;
     }
 
     public static class ShooterConstants {
         public final static int kPIDLoopIdx = 0;
-        public final static double kP = 0;
-        public final static double kI = 0;
-        public final static double kD = 0;
+        public final static double kP = 1;
+        public final static double kI = 0.1;
+        public final static double kD = 0.3;
         public final static double kF = 0;
 
-        public final static double targetVelocity = 10;
+        public final static double targetVelocity = 21000;
     }
 
 }
