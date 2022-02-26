@@ -17,7 +17,7 @@ public class RunFeeder extends CommandBase{
 
     @Override
     public void execute() {
-        feeder.runFeeder(Direction.FORWARDS);
+        feeder.runFeeder(direction);
     }
 
     @Override

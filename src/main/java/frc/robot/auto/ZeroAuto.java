@@ -18,38 +18,36 @@ import frc.robot.trajectories.Trajectories;
 
 //Does Nothing
 public class ZeroAuto extends CommandBase{
-    // private Drivetrain drivetrain;
-    // private Arm arm;
-    // private Intake intake;
-    // private Feeder feeder;
-    // private Shooter shooter;
-    // private Trajectories trajectories = new Trajectories();
-    // private Trajectory trajectory;
+//     Drivetrain drivetrain;
+//     Arm arm;
+//     Intake intake;
+//     Feeder feeder;
+//     Shooter shooter;
+//     Trajectories trajectories = new Trajectories();
+//     Trajectory trajectory;
 
 
 
-    // public ZeroAuto(Drivetrain drivetrain, Arm arm, Intake intake, Feeder feeder, Shooter shooter) {
-    //     this.drivetrain = drivetrain;
-    //     this.arm = arm;
-    //     this.intake = intake;
-    //     this.feeder = feeder;
-    //     this.shooter = shooter;
-    //     trajectory =  trajectories.loadTrajectory("Path"); //The "Path" should refer to the location of the pathweaver json file in this project
+//     public FirstAuto(Drivetrain drivetrain, Arm arm, Intake intake, Feeder feeder, Shooter shooter) {
+//         this.drivetrain = drivetrain;
+//         this.arm = arm;
+//         this.intake = intake;
+//         this.feeder = feeder;
+//         this.shooter = shooter;
+//         trajectory =  trajectories.loadTrajectory("Path");
 
-    // Any number below is in seconds. KEEP IN MIND THAT AUTO IS 15 SECONDS, which is why line 50 says 15.
-
-    //     new ParallelCommandGroup(
-    //       trajectories.followTrajectory(drivetrain, trajectory),
-    //       new SequentialCommandGroup(
-    //           new Shoot(shooter),
-    //           new WaitCommand(5),
-    //           new ArmAndIntake(arm, intake).withTimeout(5),
-    //           new RunFeeder(feeder, Direction.FORWARDS),
-    //           new WaitCommand(5)
-    //       )  
-    //     ).withTimeout(15);
+//         new ParallelCommandGroup(
+//           trajectories.followTrajectory(drivetrain, trajectory),
+//           new SequentialCommandGroup(
+//               new Shoot(shooter),
+//               new WaitCommand(5),
+//               new ArmAndIntake(arm, intake).withTimeout(5),
+//               new RunFeeder(feeder, Direction.FORWARDS),
+//               new WaitCommand(5)
+//           )  
+//         ).withTimeout(15);
 
 
-    // }
+//     }
+// }
 }
-

@@ -31,7 +31,7 @@ public class IntakeAndArmTests {
 
     }
 
-    @Test
+    /*@Test
     public void encoderTest() {
         System.out.println("Encoder should output a number");
         System.out.println("Encoder output: " + arm.getEncoderRaw());
@@ -44,7 +44,7 @@ public class IntakeAndArmTests {
         System.out.println("PID output: " + arm.calculatePID(0, 0));
         arm.resetPID();
         assertEquals(arm.calculatePID(0, 0), 0, delta);
-    }
+    }*/
 
     @After
     public void shutdown() {
