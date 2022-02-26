@@ -35,21 +35,23 @@ public class Constants {
         public final static int secondaryJoystickPort = 2;
 
         public class SecondaryJoystick { 
-            public final static int lowerArm = 2; 
-            public final static int raiseArm = 3;
-            public final static int runIntakeForwards = 4;
-            public final static int runIntakeBackwards = 5;
+            public final static int lowerArm = 13; 
+            public final static int raiseArm = 14;
+            public final static int runIntakeForwards = 12;
+            public final static int runIntakeBackwards = 15;
 
-            public final static int runFeederForwards = 6;
-            public final static int runFeederBackwards = 7;
-            public final static int runShooter = 8;
-            public final static int raiseClimber = 9;
-            public final static int lowerClimber = 10;
-            public final static int runNeck = 11;
-            public final static int runNeckBackwards = 12;
+            public final static int runFeederForwards = 7;
+            public final static int runFeederBackwards = 8;
+            
+            public final static int raiseClimber = 4;
+            public final static int lowerClimber = 3;
+            public final static int runNeck = 6;
+            public final static int runNeckBackwards = 9;
 
-            public final static int runNeckAndShoot = 15;
-            public final static int moveArmIntakeandShoot = 16;
+            public final static int runNeckAndShoot = 2;
+            public final static int moveArmIntakeandShoot = 1;
+
+            //public final static int runShooter = 10;
         }
     }
 
