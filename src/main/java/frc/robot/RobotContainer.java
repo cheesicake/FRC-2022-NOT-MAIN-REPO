@@ -8,13 +8,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.auto.FirstAuto;
-import frc.robot.auto.SecondAuto;
 import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
-import frc.robot.commands.Climb;
-import frc.robot.commands.Drive;
-import frc.robot.commands.RunFeeder;
-import frc.robot.commands.RunIntake;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Climber.ClimberState;
@@ -78,13 +73,6 @@ public class RobotContainer {
   private final NeckAndShoot neckAndShoot = new NeckAndShoot(neck, shooter);
   private final ArmIntakeAndFeeder armIntakeAndFeeder = new ArmIntakeAndFeeder(arm, intake, feeder);
 
-  // Auto
-  private final ZeroAuto zeroAuto = new ZeroAuto();
-  private final FirstAuto firstAuto = new FirstAuto();
-  private final SecondAuto secondAuto = new SecondAuto();
-  private final ThirdAuto thirdAuto = new ThirdAuto();
-
-  private final SendableChooser<Command> sendableChooser = new SendableChooser<>();
 
 
 
@@ -122,18 +110,15 @@ public class RobotContainer {
     lowerClimberButton.whenHeld(lowerClimber);
     runNeckAndShootButton.whenHeld(neckAndShoot);
     lowerArmIntakeAndFeederButton.whenHeld(armIntakeAndFeeder);
+    lowerArmIntakeAndFeederButton.whenReleased(new MoveArm(arm, ArmState.HIGH));
   }
 
   private void configureAutos() {
-    // TODO: Rename Autos on Dashboard
-    sendableChooser.setDefaultOption("No Auto", zeroAuto);
-    sendableChooser.addOption("First Auto", firstAuto);
-    sendableChooser.addOption("Second Auto", secondAuto);
-    sendableChooser.addOption("Third Auto", thirdAuto);
+
   }
 
   public Command getAutonomousCommand() {
-    return sendableChooser.getSelected();
+    return null;
   }
 }
 
