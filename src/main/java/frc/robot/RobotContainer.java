@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.auto.FirstAuto;
-import frc.robot.auto.SecondAuto;
 import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
 import frc.robot.subsystems.Arm;
@@ -17,10 +16,10 @@ import frc.robot.subsystems.Climber.ClimberState;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
-import frc.robot.commands.CommandGroups.ArmAndIntake;
+import frc.robot.commands.RunNeck;
+import frc.robot.commands.Shoot;
 import frc.robot.commands.CommandGroups.ArmIntakeAndFeeder;
-import frc.robot.commands.CommandGroups.FeederAndShoot;
-import frc.robot.commands.CommandGroups.IntakeAndFeeder;
+import frc.robot.commands.CommandGroups.NeckAndShoot;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Arm.ArmState;
 import frc.robot.Constants.Direction;
@@ -55,9 +54,7 @@ public class RobotContainer {
   private final JoystickButton shootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runShooter);
   private final JoystickButton raiseClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseClimber);
   private final JoystickButton lowerClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerClimber);
-  private final JoystickButton lowerArmAndIntakeButton = new JoystickButton(secondaryJoystick,Constants.JoystickConstants.SecondaryJoystick.moveArmAndIntake);
-  private final JoystickButton runIntakeAndFeederButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runIntakeAndFeeder);
-  private final JoystickButton runFeederAndShootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runFeederAndShoot);
+  private final JoystickButton runNeckAndShootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runNeckAndShoot);
   private final JoystickButton lowerArmIntakeAndFeederButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.moveArmIntakeandShoot);
 
   // Commands
@@ -72,19 +69,10 @@ public class RobotContainer {
   private final Climb lowerClimber = new Climb(climber, ClimberState.LOWER);
   private final RunNeck runNeck = new RunNeck(neck, Direction.FORWARDS);
   private final RunNeck runNeckBackwards = new RunNeck(neck, Direction.BACKWARDS);
-  private final Shoot shoot = new Shoot(neck, shooter, 10d);
-  private final ArmAndIntake armAndIntake = new ArmAndIntake(arm, intake);
-  private final IntakeAndFeeder intakeAndFeeder = new IntakeAndFeeder(intake, feeder);
-  private final FeederAndShoot feederAndShoot = new FeederAndShoot(feeder, neck, shooter);
+  private final Shoot shoot = new Shoot(shooter, Constants.ShooterConstants.targetVelocity);
+  private final NeckAndShoot neckAndShoot = new NeckAndShoot(neck, shooter);
   private final ArmIntakeAndFeeder armIntakeAndFeeder = new ArmIntakeAndFeeder(arm, intake, feeder);
 
-  // Auto
-  private final ZeroAuto zeroAuto = new ZeroAuto();
-  private final FirstAuto firstAuto = new FirstAuto();
-  private final SecondAuto secondAuto = new SecondAuto();
-  private final ThirdAuto thirdAuto = new ThirdAuto();
-
-  private final SendableChooser<Command> sendableChooser = new SendableChooser<>();
 
 
 
@@ -97,6 +85,10 @@ public class RobotContainer {
   public void periodic() {
 
   }  
+
+  public Arm getArm() {
+    return arm;
+  }
 
   private void zeroSubsystems() {
     arm.zeroArm();
@@ -116,23 +108,17 @@ public class RobotContainer {
     runFeederBackwardsButton.whenHeld(runFeederBackwards);
     raiseClimberButton.whenHeld(raiseClimber);
     lowerClimberButton.whenHeld(lowerClimber);
-    lowerArmAndIntakeButton.whenHeld(armAndIntake);
-    runIntakeAndFeederButton.whenHeld(intakeAndFeeder);
-    runFeederAndShootButton.whenHeld(feederAndShoot);
+    runNeckAndShootButton.whenHeld(neckAndShoot);
     lowerArmIntakeAndFeederButton.whenHeld(armIntakeAndFeeder);
     lowerArmIntakeAndFeederButton.whenReleased(new MoveArm(arm, ArmState.HIGH));
   }
 
   private void configureAutos() {
-    // TODO: Rename Autos on Dashboard
-    sendableChooser.setDefaultOption("No Auto", zeroAuto);
-    sendableChooser.addOption("First Auto", firstAuto);
-    sendableChooser.addOption("Second Auto", secondAuto);
-    sendableChooser.addOption("Third Auto", thirdAuto);
+
   }
 
   public Command getAutonomousCommand() {
-    return sendableChooser.getSelected();
+    return null;
   }
 }
 

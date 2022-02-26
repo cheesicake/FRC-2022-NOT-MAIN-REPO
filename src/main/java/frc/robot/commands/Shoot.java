@@ -10,36 +10,22 @@ public class Shoot extends CommandBase {
     private Neck neck;
     private Shooter shooter;
     private Double targetVelocity;
-    private Double leftVelocity;
-    private Double rightVelocity;
 
-    public Shoot(Neck neck, Shooter shooter, double targetVelocity) {
+
+    public Shoot(Shooter shooter, double targetVelocity) {
         this.targetVelocity = targetVelocity;
         this.shooter = shooter;
-        this.neck = neck;
 
-        addRequirements(neck, shooter);
+        addRequirements(shooter);
     }
 
     @Override
     public void execute() {
-        shooter.shoot();
-
-        leftVelocity = shooter.getLeftVelocity();
-        rightVelocity = shooter.getRightVelocity();
-
-        //wait until both left and right velocities are above the target
-        while (leftVelocity < targetVelocity || rightVelocity < targetVelocity) {
-            leftVelocity = shooter.getLeftVelocity();
-            rightVelocity = shooter.getRightVelocity();
-        }
-        
-        neck.runNeck(Direction.FORWARDS);
+        shooter.shoot(targetVelocity);
     }
 
     @Override 
     public void end(boolean i) {
         shooter.stop();
-        neck.stop();
     }
 }
