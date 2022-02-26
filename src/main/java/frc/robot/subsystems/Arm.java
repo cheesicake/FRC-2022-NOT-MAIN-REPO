@@ -17,9 +17,7 @@ public class Arm extends SubsystemBase{
     private MotorControllerGroup armSparks;
     private Encoder encoder1, encoder2;
     private PIDController pid;
-    private Encoder encoderLeft;
-    private Encoder encoderRight;
-
+    
     public static enum ArmState {
         LOW,
         HIGH
@@ -32,8 +30,6 @@ public class Arm extends SubsystemBase{
     public Arm() {
         armSpark1 = new CANSparkMax(Constants.CanIds.armSpark1, MotorType.kBrushless);
         armSpark2 = new CANSparkMax(Constants.CanIds.armSpark2, MotorType.kBrushless);
-        encoderLeft = new Encoder(Constants.IntakeAndArmConstants.encoderChannelA, Constants.IntakeAndArmConstants.encoderChannelB);
-        encoderRight = new Encoder(2, 3);
 
         //TODO: CHECK WHICH ONES ARE INVERTED
         armSpark1.setInverted(true);
@@ -124,4 +120,3 @@ public class Arm extends SubsystemBase{
     }
 
 }
-

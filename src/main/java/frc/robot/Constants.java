@@ -48,8 +48,8 @@ public class Constants {
             public final static int runNeck = 6;
             public final static int runNeckBackwards = 9;
 
-            public final static int runNeckAndShoot = 2;
-            public final static int moveArmIntakeandShoot = 1;
+            public final static int runNeckAndShoot = 1;
+            public final static int moveArmIntakeAndFeed = 2;
 
             //public final static int runShooter = 10;
         }

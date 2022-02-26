@@ -55,7 +55,7 @@ public class RobotContainer {
   private final JoystickButton raiseClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.raiseClimber);
   private final JoystickButton lowerClimberButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.lowerClimber);
   private final JoystickButton runNeckAndShootButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.runNeckAndShoot);
-  private final JoystickButton lowerArmIntakeAndFeederButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.moveArmIntakeandShoot);
+  private final JoystickButton lowerArmIntakeAndFeederButton = new JoystickButton(secondaryJoystick, Constants.JoystickConstants.SecondaryJoystick.moveArmIntakeAndFeed);
 
   // Commands
   private final Drive drive = new Drive(drivetrain, leftJoystick, rightJoystick);
@@ -72,6 +72,7 @@ public class RobotContainer {
   private final Shoot shoot = new Shoot(shooter, Constants.ShooterConstants.targetVelocity);
   private final NeckAndShoot neckAndShoot = new NeckAndShoot(neck, shooter);
   private final ArmIntakeAndFeeder armIntakeAndFeeder = new ArmIntakeAndFeeder(arm, intake, feeder);
+  
 
 
 
@@ -111,7 +112,8 @@ public class RobotContainer {
     lowerClimberButton.whenHeld(lowerClimber);
     runNeckAndShootButton.whenHeld(neckAndShoot);
     lowerArmIntakeAndFeederButton.whenHeld(armIntakeAndFeeder);
-    lowerArmIntakeAndFeederButton.whenReleased(new MoveArm(arm, ArmState.HIGH));
+    lowerArmIntakeAndFeederButton.whenReleased(raiseArm);
+    lowerArmButton.whenReleased(raiseArm);
   }
 
   private void configureAutos() {

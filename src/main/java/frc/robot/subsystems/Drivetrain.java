@@ -87,10 +87,10 @@ public class Drivetrain extends SubsystemBase {
     
 
     public void zeroSensors() {
-        leftFrontTalon.setSelectedSensorPosition(0);
-        rightFrontTalon.setSelectedSensorPosition(0);
-        odometry.resetPosition(pose, pigeon.getRotation2d());
-        pigeon.reset();
+        // leftFrontTalon.setSelectedSensorPosition(0);
+        // rightFrontTalon.setSelectedSensorPosition(0);
+        // odometry.resetPosition(pose, pigeon.getRotation2d());
+        // pigeon.reset();
     }
 
     public MotorControllerGroup getLeftMotors() {
