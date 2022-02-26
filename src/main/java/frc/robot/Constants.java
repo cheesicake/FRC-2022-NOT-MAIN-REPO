@@ -57,7 +57,7 @@ public class Constants {
     public static class DriveTrainConstants {
         public final static double encoderEdgesPerRev = 2048;
         public final static double gearRatio = 8.667;
-        public final static double wheelCircumference = 2 * Math.PI * Units.metersToInches(3);
+        public final static double wheelCircumference = 2 * Math.PI * Units.inchesToMeters(3);
 
 
         public final static double kP = 0.5;

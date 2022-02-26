@@ -29,7 +29,7 @@ import frc.robot.Constants.Direction;
 public class RobotContainer {
 
   //Subsystems
-  private final Drivetrain drivetrain = new Drivetrain();
+  public final Drivetrain drivetrain = new Drivetrain();
   private final Intake intake = new Intake();
   public final Arm arm = new Arm();
   private final Feeder feeder = new Feeder();
