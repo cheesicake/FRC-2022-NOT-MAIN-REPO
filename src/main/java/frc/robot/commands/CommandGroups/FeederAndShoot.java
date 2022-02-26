@@ -21,8 +21,8 @@ public class FeederAndShoot extends ParallelCommandGroup {
 
         addCommands(
             new RunFeeder(feeder, Direction.FORWARDS),
-            new RunNeck(neck, Direction. FORWARDS),
-            new Shoot(neck, shooter, 10)
+            new RunNeck(neck, Direction. FORWARDS)
+            //new Shoot(neck, shooter, 10)
         );
     }
 }

@@ -102,7 +102,7 @@ public class Drivetrain extends SubsystemBase {
         return rightMotors;
     }
     public double getLeftPosition() {
-        return leftFrontTalon.getSelectedSensorPosition() / (Constants.DriveTrainConstants.wheelCircumference * Constants.DriveTrainConstants.encoderEdgesPerRev * Constants.DriveTrainConstants.gearRatio);
+        return leftFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.wheelCircumference / (Constants.DriveTrainConstants.encoderEdgesPerRev * Constants.DriveTrainConstants.gearRatio);
     }
 
     public double getRightPosition() {
