@@ -60,19 +60,16 @@ public class Constants {
         public final static double gearRatio = 8.667;
         public final static double wheelCircumference = 2 * Math.PI * Units.inchesToMeters(3);
 
-
-        public final static double kP = 0.5;
-        public final static double kI = 0;
-        public final static double kD = 0;
-
         public final static double trackWidth = Units.inchesToMeters(25);
         public static final DifferentialDriveKinematics kDriveKinematics =new DifferentialDriveKinematics(trackWidth);
 
         
         //TODO: Need to get actual values later from the characterization tool.
-        public static final double kS = 1;
-        public static final double kV = 1;
-        public static final double kA = 1;
+        public static final double ksVolts = 0.22;
+        public static final double kvVoltSecondsPerMeter = 1.98;
+        public static final double kaVoltSecondsSquaredPerMeter = 0.2;
+
+        public static final double kPDriveVel = 0;
 
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
