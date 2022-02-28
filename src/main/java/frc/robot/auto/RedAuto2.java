@@ -47,8 +47,7 @@ public class RedAuto2 extends ParallelCommandGroup{
                 new WaitCommand(2),
                 new ArmIntakeAndFeeder(arm, intake, feeder).withTimeout(2),
                 new WaitCommand(3),
-                new Shoot(shooter, Constants.ShooterConstants.targetVelocity).withTimeout(1),
-                new Shoot(shooter, Constants.ShooterConstants.targetVelocity).withTimeout(1)
+                new Shoot(shooter, Constants.ShooterConstants.targetVelocity).withTimeout(2)
             )  
         ).withTimeout(15);
 
