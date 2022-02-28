@@ -41,6 +41,8 @@ public class Drivetrain extends SubsystemBase {
 
     private PIDController leftPID, rightPID;
 
+    private DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
+
     public Drivetrain() {
         rightFrontTalon = new WPI_TalonFX(Constants.CanIds.rightFrontTalon);
         rightRearTalon = new WPI_TalonFX(Constants.CanIds.rightRearTalon);
@@ -53,7 +55,7 @@ public class Drivetrain extends SubsystemBase {
 
         //TODO: Need to See Which Ones Are Inverted
 
-        //drive = new DifferentialDrive(leftMotors, rightMotors);
+        
 
         pigeon = new WPI_PigeonIMU(Constants.CanIds.pigeonId);
 
@@ -68,6 +70,8 @@ public class Drivetrain extends SubsystemBase {
         odometry = new DifferentialDriveOdometry(getRotation());
         leftPID = new PIDController(DriveTrainConstants.kP, DriveTrainConstants.kI, DriveTrainConstants.kD);
         rightPID = new PIDController(DriveTrainConstants.kP, DriveTrainConstants.kI, DriveTrainConstants.kD);
+
+        zeroSensors();
     }
 
     public void drive(double leftSpeed, double rightSpeed) {
@@ -90,7 +94,7 @@ public class Drivetrain extends SubsystemBase {
         // leftFrontTalon.setSelectedSensorPosition(0);
         // rightFrontTalon.setSelectedSensorPosition(0);
         // odometry.resetPosition(pose, pigeon.getRotation2d());
-        // pigeon.reset();
+        pigeon.reset();
     }
 
     public MotorControllerGroup getLeftMotors() {
@@ -139,8 +143,8 @@ public class Drivetrain extends SubsystemBase {
         //I suspect we might have to do RPM motor to RPM wheel before converting to m/time
         //So we might need gear ratios? => sensorVelocity / GEAR_RATIO *2PI * m/min / 60s
         return new DifferentialDriveWheelSpeeds(
-            leftFrontTalon.getSelectedSensorVelocity(),
-            rightFrontTalon.getSelectedSensorVelocity()
+            getLeftPosition(),
+            getRightPosition()
         );
     }
     public PIDController getLeftPIDController() {
