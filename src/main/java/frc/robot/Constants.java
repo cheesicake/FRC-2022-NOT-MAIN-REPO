@@ -65,14 +65,14 @@ public class Constants {
 
         
         //TODO: Need to get actual values later from the characterization tool.
-        public static final double ksVolts = 0.22;
-        public static final double kvVoltSecondsPerMeter = 1.98;
-        public static final double kaVoltSecondsSquaredPerMeter = 0.2;
+        public static final double ksVolts = 0.771205;
+        public static final double kvVoltSecondsPerMeter = 1.96575;
+        public static final double kaVoltSecondsSquaredPerMeter = 0.681715;
 
-        public static final double kPDriveVel = 0;
+        public static final double kPDriveVel = 3.06255;
 
-        public static final double kMaxSpeedMetersPerSecond = 3;
-        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+        public static final double kMaxSpeedMetersPerSecond = 5;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 2;
 
         //Officially Tested 
         public static final double kRamseteB = 2;
