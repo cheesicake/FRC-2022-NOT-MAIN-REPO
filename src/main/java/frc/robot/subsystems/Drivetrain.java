@@ -35,7 +35,7 @@ public class Drivetrain extends SubsystemBase {
     //private final DifferentialDrive drive;
     //private final DifferentialDriveOdometry odometry;
 
-    private DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
+    private DifferentialDrive drive;
     private DifferentialDriveKinematics kinematics;
     private DifferentialDriveOdometry odometry;
     private SimpleMotorFeedforward feedforward;
@@ -57,7 +57,7 @@ public class Drivetrain extends SubsystemBase {
         //TODO: Need to See Which Ones Are Inverted
 
         
-
+        
         pigeon = new WPI_PigeonIMU(Constants.CanIds.pigeonId);
 
         // TODO: Need to See Which Ones Are Inverted
@@ -66,6 +66,7 @@ public class Drivetrain extends SubsystemBase {
 
 
         //Kinematics parameter is the distance between the wheels aka track width.
+        drive = new DifferentialDrive(leftMotors, rightMotors);
         kinematics = new DifferentialDriveKinematics(Constants.DriveTrainConstants.trackWidth);
         feedforward = new SimpleMotorFeedforward(DriveTrainConstants.ksVolts, DriveTrainConstants.kvVoltSecondsPerMeter, DriveTrainConstants.kaVoltSecondsSquaredPerMeter);
         odometry = new DifferentialDriveOdometry(pigeon.getRotation2d());
@@ -88,6 +89,7 @@ public class Drivetrain extends SubsystemBase {
     @Override
     public void periodic() {
         pose = odometry.update(getRotation(), getLeftPosition(), getRightPosition());
+        drive = new DifferentialDrive(leftMotors, rightMotors);
     }
     
 
@@ -187,4 +189,3 @@ public class Drivetrain extends SubsystemBase {
 
 
 }
-

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import frc.robot.auto.BlueAuto2;
 import frc.robot.auto.FirstAuto;
 import frc.robot.auto.ThirdAuto;
 import frc.robot.auto.ZeroAuto;
@@ -73,6 +74,7 @@ public class RobotContainer {
   private final NeckAndShoot neckAndShoot = new NeckAndShoot(feeder,neck, shooter);
   private final ArmIntakeAndFeeder armIntakeAndFeeder = new ArmIntakeAndFeeder(arm, intake, feeder);
   
+  private BlueAuto2 blueAuto2 = new BlueAuto2(drivetrain, arm, intake, feeder, shooter);
 
 
 
@@ -121,7 +123,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return null;
+    return blueAuto2;
   }
 }
 

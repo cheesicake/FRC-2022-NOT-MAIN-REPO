@@ -43,6 +43,7 @@ public class Trajectories {
       .setKinematics(Constants.DriveTrainConstants.kDriveKinematics)
       .addConstraint(autoVoltageConstraint);
         
+       
       RamseteCommand command = new RamseteCommand(
           trajectory,
           drivetrain::getPose,
@@ -55,13 +56,12 @@ public class Trajectories {
           drivetrain::tankDriveVolts,
           drivetrain
       );
-        
-      return command.andThen(drivetrain::stop);
-    }
+     return command.andThen(drivetrain::stop);
+ }
 
     public static Trajectory loadTrajectory(String path) { //JSON path
         try {
-          return TrajectoryUtil.fromPathweaverJson(Filesystem.getDeployDirectory().toPath().resolve("output/" + path));
+          return TrajectoryUtil.fromPathweaverJson(Filesystem.getDeployDirectory().toPath().resolve(path));
         } catch (IOException e) {
           DriverStation.reportError("Trajectory not found. " + path, e.getStackTrace());
           e.printStackTrace();
