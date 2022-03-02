@@ -16,13 +16,13 @@ public class Constants {
         public final static int leftRearTalon = 4;
         public final static int shooterTalonRight = 5;
         public final static int shooterTalonLeft = 6;
-        public final static int intakeSpark = 13;
-        public final static int armSpark1 = 10;
-        public final static int armSpark2 = 12;
-        public final static int feederSpark = 9;
-        public final static int neckSpark = 7;
-        public final static int climberSpark1 = 8;
-        public final static int climberSpark2 = 11;
+        public final static int intakeSpark = 7;
+        public final static int armSpark1 = 8;
+        public final static int armSpark2 = 9;
+        public final static int feederSpark = 10;
+        public final static int neckSpark = 11;
+        public final static int climberSpark1 = 12;
+        public final static int climberSpark2 = 13;
         
     }
 
@@ -31,37 +31,32 @@ public class Constants {
         public final static int rightJoystickPort = 1;
         public final static int secondaryJoystickPort = 2;
 
-        public class SecondaryJoystick { 
-            public final static int lowerArm = 2; 
-            public final static int raiseArm = 3;
-            public final static int runIntakeForwards = 4;
-            public final static int runIntakeBackwards = 5;
+        public class SecondaryJoystick { // Temporary Buttons for Controls meant for Week 1 Teams to use
+            public final static int lowerArm = 0; // Implement PID System to preset these positions
+            public final static int raiseArm = 1;
+            public final static int runIntakeForwards = 2;
+            public final static int runIntakeBackwards = 3;
 
-            public final static int runFeederForwards = 6;
-            public final static int runFeederBackwards = 7;
-            public final static int runShooter = 8;
-            public final static int raiseClimber = 9;
-            public final static int lowerClimber = 10;
-            public final static int runNeck = 11;
-            public final static int runNeckBackwards = 12;
+            public final static int runFeederForwards = 4;
+            public final static int runFeederBackwards = 5;
+            public final static int runShooter = 6;
+            public final static int raiseClimber = 7;
+            public final static int lowerClimber = 8;
+            public final static int runNeck = 9;
 
-            public final static int moveArmAndIntake = 13;
-            public final static int runIntakeAndFeeder = 14;
-            public final static int runFeederAndShoot = 15;
-            public final static int moveArmIntakeandShoot = 16;
+            public final static int moveArmAndIntake = 10;
+            public final static int runIntakeAndFeeder = 11;
+            public final static int runFeederAndShoot = 12;
+            public final static int moveArmIntakeandShoot = 13;
         }
     }
 
     public static class DriveTrainConstants {
-        public final static double encoderEdgesPerRev = 2048;
-        public final static double gearRatio = 8.667;
-        public final static double wheelCircumference = 2 * Math.PI * Units.metersToInches(3);
-
-
         public final static double kP = 0.5;
         public final static double kI = 0;
         public final static double kD = 0;
-
+        public final static double metersPerRev = Units.metersToInches(3) * 2 * Math.PI;
+        
         public final static double trackWidth = Units.inchesToMeters(25);
         
         //TODO: Need to get actual values later from the characterization tool.
@@ -118,17 +113,15 @@ public class Constants {
     }
 
     public static class FeederConstants {
-        public final static double feederSpeed = 1;
-        public final static double backwardsFeederSpeed = -1;
+        public final static double feederSpeed = 0.3;
+        public final static double backwardsFeederSpeed = -0.3;
     }
 
-    public static class NeckConstants {
-        public final static double neckSpeed = 0.5;
-        public final static double backwardsNeckSpeed = -0.5;
-    }
 
     public static class ShooterConstants {
+        public final static double neckSpeed = 0.5;
         public final static double shootSpeed = 1.0;
     }
+
 
 }

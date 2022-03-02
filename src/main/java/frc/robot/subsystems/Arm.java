@@ -2,10 +2,10 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.math.controller.PIDController;
 
@@ -13,7 +13,7 @@ public class Arm extends SubsystemBase{
     private CANSparkMax armSpark1;
     private CANSparkMax armSpark2;
     private MotorControllerGroup armSparks;
-    private RelativeEncoder encoder;
+    private Encoder encoder;
     private PIDController pid;
     
     public static enum ArmState {
@@ -34,7 +34,12 @@ public class Arm extends SubsystemBase{
         armSpark2.setInverted(false);
 
         armSparks = new MotorControllerGroup(armSpark1, armSpark2);
-        encoder = armSpark1.getEncoder();
+        encoder = new Encoder(
+            Constants.IntakeAndArmConstants.encoderChannelA,
+            Constants.IntakeAndArmConstants.encoderChannelB,
+            Constants.IntakeAndArmConstants.encoderReverse,
+            Constants.IntakeAndArmConstants.encodingType
+        );
         lowSetPoint = Constants.IntakeAndArmConstants.pidLowSetPoint;
         highSetPoint = Constants.IntakeAndArmConstants.pidHighSetPoint;
 
@@ -51,8 +56,8 @@ public class Arm extends SubsystemBase{
         armSparks.set(speed);
     }
 
-    public double getEncoderRaw() {
-        return encoder.getPosition();
+    public int getEncoderRaw() {
+        return encoder.getRaw();
     }
 
     public double calculatePID(double encoderRaw, int setPoint) {
@@ -66,7 +71,7 @@ public class Arm extends SubsystemBase{
                 setArmSpeed(calculatePID(getEncoderRaw(), highSetPoint));
                 break;
             case LOW:
-            setArmSpeed(calculatePID(getEncoderRaw(), lowSetPoint));
+                setArmSpeed(calculatePID(getEncoderRaw(), lowSetPoint));
                 break;
         }
     }
@@ -80,7 +85,7 @@ public class Arm extends SubsystemBase{
     }
 
     public void zeroArm() {
-        resetPID();
+        pid.reset();
         armState = ArmState.HIGH;
         runArm(armState);
     }
@@ -88,6 +93,7 @@ public class Arm extends SubsystemBase{
     public void close() {
         armSpark1.close();
         armSpark2.close();
+        encoder.close();
         pid.close();
     }
 

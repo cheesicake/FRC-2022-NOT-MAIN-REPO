@@ -9,20 +9,21 @@ import frc.robot.Constants.Direction;
 
 public class Feeder extends SubsystemBase {
     private CANSparkMax feederSpark;
+    private Direction direction;
 
     public Feeder() {
         feederSpark = new CANSparkMax(Constants.CanIds.feederSpark, MotorType.kBrushless);
-
-        feederSpark.setInverted(true);
+        direction = Direction.FORWARDS;
     }
 
     public void runFeeder(Direction direction) {
+        this.direction = direction;
         switch(direction) {
             case FORWARDS:
                 feederSpark.set(Constants.FeederConstants.feederSpeed);
                 break;
             case BACKWARDS:
-                feederSpark.set(Constants.FeederConstants.backwardsFeederSpeed);
+                feederSpark.set(Constants.FeederConstants.feederSpeed);
                 break;
         }
     }

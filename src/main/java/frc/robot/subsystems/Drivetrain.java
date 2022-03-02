@@ -4,7 +4,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import com.ctre.phoenix.sensors.Pigeon2;
 import com.ctre.phoenix.sensors.PigeonIMU;
-import com.ctre.phoenix.sensors.WPI_PigeonIMU;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
@@ -30,9 +29,9 @@ public class Drivetrain extends SubsystemBase {
     private MotorControllerGroup leftMotors;
     private MotorControllerGroup rightMotors;
 
-    private WPI_PigeonIMU pigeon;
+    private PigeonIMU pigeon;
 
-    //private final DifferentialDrive drive;
+    private final DifferentialDrive drive;
     //private final DifferentialDriveOdometry odometry;
     private DifferentialDriveKinematics kinematics;
     private DifferentialDriveOdometry odometry;
@@ -47,15 +46,15 @@ public class Drivetrain extends SubsystemBase {
         leftFrontTalon = new WPI_TalonFX(Constants.CanIds.leftFrontTalon);
         leftRearTalon = new WPI_TalonFX(Constants.CanIds.leftRearTalon);
 
-        leftMotors = new MotorControllerGroup(leftRearTalon, leftFrontTalon);
+        leftMotors = new MotorControllerGroup(leftFrontTalon, leftRearTalon);
         rightMotors = new MotorControllerGroup(rightFrontTalon, rightRearTalon);
         
 
         //TODO: Need to See Which Ones Are Inverted
 
-        //drive = new DifferentialDrive(leftMotors, rightMotors);
+        drive = new DifferentialDrive(leftMotors, rightMotors);
 
-        pigeon = new WPI_PigeonIMU(Constants.CanIds.pigeonId);
+        pigeon = new PigeonIMU(Constants.CanIds.pigeonId);
 
         // TODO: Need to See Which Ones Are Inverted
         leftMotors.setInverted(true);
@@ -101,12 +100,18 @@ public class Drivetrain extends SubsystemBase {
     public MotorControllerGroup getRightMotors() {
         return rightMotors;
     }
+
+    //Return Position from Integrated Encoders from TalonFXs 
+
+    /*
+        Need to Check How Accurate This Is
+    */
     public double getLeftPosition() {
-        return leftFrontTalon.getSelectedSensorPosition() / (Constants.DriveTrainConstants.wheelCircumference * Constants.DriveTrainConstants.encoderEdgesPerRev * Constants.DriveTrainConstants.gearRatio);
+        return leftFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
     }
 
     public double getRightPosition() {
-        return rightFrontTalon.getSelectedSensorPosition() * (Constants.DriveTrainConstants.wheelCircumference * Constants.DriveTrainConstants.encoderEdgesPerRev * Constants.DriveTrainConstants.gearRatio);
+        return rightFrontTalon.getSelectedSensorPosition() * Constants.DriveTrainConstants.metersPerRev;
     }
 
     public double getRightVelocity() {
@@ -121,7 +126,7 @@ public class Drivetrain extends SubsystemBase {
     //Use Pigeon to get angle
     public Rotation2d getHeading(){
         //Need to double check the reading from this later.
-        return Rotation2d.fromDegrees(pigeon.getAngle());
+        return Rotation2d.fromDegrees(pigeon.getCompassHeading() * -1);
     }
 
     public DifferentialDriveKinematics getDifferentialDriveKinematics(){
@@ -132,11 +137,11 @@ public class Drivetrain extends SubsystemBase {
         return pose;
     }
 
-    public SimpleMotorFeedforward getMotorFeedForward() {
+    public SimpleMotorFeedforward getMotorFeedForward(){
         return feedforward;
     }
     
-    public DifferentialDriveWheelSpeeds getVelocities() {
+    public DifferentialDriveWheelSpeeds getVelocities(){
         //I suspect we might have to do RPM motor to RPM wheel before converting to m/time
         //So we might need gear ratios? => sensorVelocity / GEAR_RATIO *2PI * m/min / 60s
         return new DifferentialDriveWheelSpeeds(
@@ -144,11 +149,7 @@ public class Drivetrain extends SubsystemBase {
             rightFrontTalon.getSelectedSensorVelocity()
         );
     }
-    public PIDController getLeftPIDController() {
-        return leftPID;
-    }
-    public PIDController getRightPIDController() {
-        return rightPID;
-    }
+    public PIDController getLeftPIDController(){return leftPID;}
+    public PIDController getRightPIDController(){return rightPID;}
 }
 
