@@ -3,7 +3,6 @@ package frc.robot;
 import com.fasterxml.jackson.databind.util.PrimitiveArrayBuilder;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -44,8 +43,6 @@ public class RobotContainer {
   private final Feeder feeder = new Feeder();
   private final Climber climber = new Climber();
   private final Shooter shooter = new Shooter();
-
-  private final PowerDistribution powerDistribution = new PowerDistribution(0, null);
 
   //Joysticks
   private Joystick leftJoystick = new Joystick(Constants.JoystickConstants.leftJoystickPort);
@@ -139,36 +136,6 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
     return sendableChooser.getSelected();
-  }
-
-  public Feeder getFeeder() {
-    return feeder;
-  }
-  public Arm getArm() {
-    return arm;
-  }
-  public Drivetrain getDriveTrain() {
-    return drivetrain;
-  }
-
-  public Intake getIntake() {
-    return intake;
-  }
-
-  public Climber getClimber() {
-    return climber;
-  }
-
-  public Shooter getShooter(){
-    return shooter;
-  }
-
-  public Neck getNeck() {
-    return neck;
-  }
-
-  public PowerDistribution getPowerDistribution(){
-    return powerDistribution;
   }
 }
 

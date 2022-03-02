@@ -2,18 +2,12 @@ package frc.robot;
 
 import java.beans.Encoder;
 
-import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Dashboard {
-    private Feeder feeder;
-    private PowerDistribution powerDistribution;
 
-    public Dashboard(RobotContainer m_robotContainer) {
-        feeder = m_robotContainer.getFeeder();
-        powerDistribution = m_robotContainer.getPowerDistribution();
-        m_robotContainer.
+
+    public Dashboard() {
         display();
     }
 
@@ -24,18 +18,12 @@ public class Dashboard {
         shooterInfo();
         visionInfo();
     }
-      //Pigeon Gyro, check if it works
-     public void pigeonData() {
-     electrical
-        .add("Gyro data", /*hope this works->*/drivetrain.getHeading())
-        .withWidget(builtInWidgets.kGyro)
-        .withSize(2, 2)
-        .withPosition(4, 0);
+
     public void intakeInfo() {
         SmartDashboard.putBoolean("String", true); //Example
     }
 
-    public void feederInfo() { 
+    public void feederInfo() {
         SmartDashboard.putBoolean("String", true);
         //Encoder
         //Encoder feederMotorEncoder = new Encoder (10);
@@ -61,8 +49,4 @@ public class Dashboard {
         SmartDashboard.putBoolean("String", true);
     }
 
-    public double PowerDistributionInfo(){
-        SmartDashboard.putData(powerDistribution)
-    }
-    
 }
